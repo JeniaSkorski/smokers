@@ -52,6 +52,7 @@ gem 'taps'
 group :production do
   gem 'pg'
   gem "activerecord-postgresql-adapter"
+  gem 'rails_12factor'
 end
 # Use unicorn as the app server
 # gem 'unicorn'f
