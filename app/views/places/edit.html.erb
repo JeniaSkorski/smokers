@@ -1,0 +1,14 @@
+<!--<h1>Editing place</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @place %> |
+<%= link_to 'Back', places_path %>
+-->
+
+<h1><%= t 'views.place.edit.title' %></h1>
+
+<%= render 'form' %>
+
+<%= link_to I18n.t('views.show'), @place %> |
+<%= link_to I18n.t('views.back'), places_path %>

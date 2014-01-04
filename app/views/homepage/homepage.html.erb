@@ -1,0 +1,54 @@
+<div id="home-container">
+	<div id="home-box">
+		<h1 id="koteret">Welcome! </h1>
+		<h3 id="mishpat">find a smoke-free venue in your area</h3>
+
+		<%= form_tag url_for( :action => 'show_selected'), :method => 'get', :role => 'form' do %>
+		<%= select_tag(:name, options_for_select(City.pluck(:name) ), {class: "btn btn-default dropdown-toggle"}) %>
+		<%= submit_tag "Go", :class => "btn btn-default" %>
+		<% end %>
+
+	</div>
+
+	<div id="my-slideshow" class="well">
+		<ul class="bjqs">
+			<li>
+				In Israel, there is a law against smoking in public places but it is not being enforced  properly in bars,
+				clubs and other night-life facilities.
+
+			</li>
+			<li>
+				Customers, employees, entertainers and vendors who spend time in these smoky environments,
+
+				whether voluntary or not, are exposed to the harmful effects of secondhand smoke.
+			</li>
+			<li>
+				We are very aware of the smell that gets in our clothes and our hair,
+
+				but did you know that there are over 7000 chemicals that lead to that smell?
+			</li>
+			<li>
+				Those chemicals cause very real, measurable, expensive and avoidable harm like asthma,
+
+				lung cancer, emphysema, and other chronic diseases.
+			</li>
+			<li>
+				We know that the related costs in both lives and healthcare  are real,
+
+				so why aren’t we doing more to eliminate it?
+			</li>
+			<li>
+				We are offering you to support healthy air quality in all indoors places
+
+				by choosing a smoke free venue from the list above for your next night out.
+			</li>
+
+		</ul>
+	</div>
+
+</div>
+
+<div id= "footer">
+
+</div>
+

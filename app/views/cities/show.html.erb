@@ -1,0 +1,113 @@
+<div id="city-container">
+
+	<div class="places_column">
+		<% @places = Place.where(:city_id => @city.id) %>
+		<% places_sorted = @places.sort_by{ |name| name[:name] } %>
+
+		<% if I18n.locale == :en %>
+		<h1><%= @places.count %> venues in <%= @city.name %> Area</h1>
+		<%end%>
+		<% if I18n.locale == :he %>
+		<h1> <%= @city.h_name %> מקומות בילוי באזור <%= @places.count %> </h1>
+		<%end%>
+
+		<% half_places =places_sorted.count/2 %>
+
+		<table>
+			<tbody>
+				<% (0..places_sorted.count/2-1).each do |i| %>
+				<tr>
+
+					<%	2.times do |j| %>
+					<td>
+					<div class="well well-sm" id="place">
+
+						<% if I18n.locale == :en %>
+
+						<h3><%= link_to "#{places_sorted[(2*i)+j].name}", places_sorted[(2*i)+j] %></h3>
+
+						<p>
+							<%= places_sorted[(2*i)+j].categories.map(&:name).join(', ') %>
+						</p>
+						<p>
+							<%= places_sorted[(2*i)+j].address %>
+						</p>
+						<p>
+							<%= places_sorted[(2*i)+j].details %>
+						</p>
+						<%end%>
+						<% if I18n.locale == :he %>
+						<p>
+							<h3><%= link_to "#{places_sorted[(2*i)+j].h_name}", places_sorted[(2*i)+j] %></h3>
+						</p>
+						<p>
+							<%= places_sorted[(2*i)+j].categories.map(&:h_name).join(', ') %>
+						</p>
+						<p>
+							<%= places_sorted[(2*i)+j].h_address %>
+						</p>
+						<p>
+							<%= places_sorted[(2*i)+j].h_details %>
+						</p>
+						<%end%>
+						<p>
+							<a href="<%= places_sorted[(2*i)+j].website %>">visit website </a>
+						</p>
+
+					</div></td>
+					<% end %>
+
+				</tr>
+				<% end %>
+				<% if places_sorted.count%2 != 0  %>
+				<tr>
+
+					<td>
+					<div class="well well-sm" class="place">
+
+						<% if I18n.locale == :en %>
+
+						<h3><%= link_to "#{places_sorted.last.name}", places_sorted.last %></h3>
+
+						<p>
+							<%= places_sorted.last.categories.map(&:name).join(', ') %>
+						</p>
+						<p>
+							<%= places_sorted.last.address %>
+						</p>
+						<p>
+							<%= places_sorted.last.details %>
+						</p>
+						<%end%>
+						<% if I18n.locale == :he %>
+						<p>
+							<h3><%= link_to "#{places_sorted.last.h_name}", places_sorted.last %></h3>
+						</p>
+						<p>
+							<%= places_sorted.last.categories.map(&:h_name).join(', ') %>
+						</p>
+						<p>
+							<%= places_sorted.last.h_address %>
+						</p>
+						<p>
+							<%= places_sorted.last.h_details %>
+						</p>
+						<%end%>
+						<p>
+							<a href="<%= places_sorted.last.website %>">visit website </a>
+						</p>
+
+					</div></td>
+				</tr>
+				<%end%>
+			</tbody>
+		</table>
+
+	</div>
+
+	<div id="map-canvas" data-center="<%= @city.location.to_json%>"
+	data-places= "<%= @places.to_json %>"
+	></div>
+
+</div>
+

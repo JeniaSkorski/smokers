@@ -1,0 +1,64 @@
+<%= form_for(@place) do |f| %>
+  <% if @place.errors.any? %>
+    <div id="error_explanation">
+     <!-- <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>-->
+		<h2><%= t 'activerecord.errors.template.header', :model => Place.model_name.human, :count => @place.errors.count %></h2>
+      <ul>
+      <% @place.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :details %><br>
+    <%= f.text_area :details %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :h_name %><br>
+    <%= f.text_field :h_name %>
+  </div>
+  <div class="field">
+    <%= f.label :h_address %><br>
+    <%= f.text_field :h_address %>
+  </div>
+  <div class="field">
+    <%= f.label :h_details %><br>
+    <%= f.text_area :h_details %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :website %><br>
+    <%= f.text_field :website %>
+  </div>
+  <%= select_tag(:city_name, options_for_select(City.pluck(:name))) %> 
+  
+  
+ <% Category.all.each do |category| %>
+ <div>
+ <label><%= category.name%></label>	
+ <%= check_box_tag(category.name, value='1')%>
+</div>
+<% end %>
+
+<div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

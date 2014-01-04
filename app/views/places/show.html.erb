@@ -1,0 +1,108 @@
+<!-- <script type="text/javascript">google.maps.event.addDomListener(window, 'load', initialize_place);</script>-->
+
+<div id="map-canvas" data-name="<%= @place.name.to_json%>" data-website="<%= @place.website.to_json%>" data-lat="<%= @place.latitude.to_json%>" data-lng="<%= @place.longitude.to_json%>"
+data-address= "<%= @place.address.to_json %>"
+></div>
+
+<script>initialize_place();</script>
+<div class="places_column" >
+	<div class="well well-sm ">
+		<p>
+			<% if I18n.locale == :en %>
+			<h3><%= @place.name %></h3>
+			<%end%>
+			<% if I18n.locale == :he %>
+			<h3><%= @place.h_name %></h3>
+			<%end%>
+		</p>
+		<p>
+			<% if I18n.locale == :en %>
+			<%= @place.categories.map(&:name).join(', ') %>
+			<%end%>
+			<% if I18n.locale == :he %>
+			<%= @place.categories.map(&:h_name).join(', ') %>
+			<%end%>
+
+		</p>
+
+		<p>
+			<% if I18n.locale == :en %>
+			<%= @place.address %>
+			<%end%>
+			<% if I18n.locale == :he %>
+			<%= @place.h_address %>
+			<%end%>
+
+		</p>
+		<p>
+			<% if I18n.locale == :en %>
+			<%= @place.details %>
+			<%end%>
+			<% if I18n.locale == :he %>
+			<%= @place.h_details %>
+			<%end%>
+
+		</p>
+
+		<a href="<%= @place.website %>"> visit website </a>
+
+		</p>
+
+	</div>
+
+	<% if I18n.locale == :en %>
+	<h3>Nearby Places</h3>
+	<%end%>
+	<% if I18n.locale == :he %>
+	<h3>מקומות באזור</h3>
+	<%end%>
+
+	<ul>
+		<%for place in @place.nearbys(0.5)%>
+		<li>
+			<% if I18n.locale == :en %>
+			<%= link_to place.name, place%> (<%= (place.distance * 1609.34).round(2)%> m)
+			<%end%>
+			<% if I18n.locale == :he %>
+			<%= link_to place.h_name, place%> (<%= (place.distance * 1609.34).round(2)%> מטרים)
+			<%end%>
+
+		</li>
+		<%end%>
+	</ul>
+
+	<!--
+	<div id="reviews">
+	<h2><%= pluralize @place.reviews.size, "Review" %></h2>
+
+	<% @place.reviews.each do |review| %>
+	<div class="review">
+	<div class="content"><%= review.content %></div>
+	<em>
+	&mdash;
+	<%= review.name %> gave it
+	<strong><%= pluralize review.rating, "star" %></strong>
+	</em>
+	</div>
+	<% end %>
+
+	<h3>Write a review</h3>
+	<%= form_for [@place, Review.new] do |f| %>
+	<div class="field">
+	<%= f.label :rating %>
+	<%= f.select :rating, 1..5 %>
+	</div>
+	<div class="field">
+	<%= f.label :name, "Your name" %>
+	<%= f.text_field :name %>
+	</div>
+	<div class="field">
+	<%= f.text_area :content, rows: 5, cols: 40 %>
+	</div>
+	<div class="actions"><%= f.submit %></div>
+	<% end %>
+	</div>-->
+	<h3>Directions To Place TBD</h3>
+	<% string = "http://noSmokingPlaces.com/" + @place.id.to_s + "/comments" %>
+	<div class="fb-comments" data-href=<%= string %> data-numposts="5" data-colorscheme="light"></div>
+</div>
