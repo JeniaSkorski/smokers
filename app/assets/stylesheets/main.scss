@@ -1,24 +1,36 @@
 @import "../../../vendor/assets/stylesheets/bootstrap/bootstrap.scss";
 #city-container {
- 
+      position: absolute;
+      top: 52px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      
   }
 
 body {
   
-   //overflow: hidden;
+  
 }
 #map-canvas { 
-    height: 900px;
-    float: left;
+   
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    
     border-right: 1px solid gray;
-    width: 50%;
+    right: 50%;
     }
 
 .places_column {
     padding-left: 50px;
-    float: right;
-    width: 50%;
-    height: 900px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    bottom: 0;
+    right: 0;
+   
     overflow-y:scroll;
    
     }
@@ -70,6 +82,7 @@ body {
 
 .navbar {
   margin-bottom: 0px;
+  z-index:10;
 }
 
 #my-slideshow {
@@ -102,3 +115,17 @@ height: 32px;
 width: 32px;
 }
 
+.homepage {
+  #map-btn{display:none;}
+  #list-btn{display:none;}
+}
+
+
+@media all and (max-width: 500px){
+  #map-canvas { 
+    right:0;
+  }
+  .places_column {
+   left: 0px;
+  }
+}

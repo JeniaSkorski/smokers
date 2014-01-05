@@ -99,5 +99,18 @@ jQuery(document).ready(function($) {
         'width' : 620,
         'responsive' : true
     });
+    $('#map-btn').click(function(e) {
+    	e.preventDefault();
+    	$('#places_column').hide();
+    	$('#map-canvas').show();
+    });
+    $('#list-btn').click(function(e) {
+    	e.preventDefault();
+    	$('#places_column').show();
+    	$('#map-canvas').hide();
+    });
+    
 });
+
+
 

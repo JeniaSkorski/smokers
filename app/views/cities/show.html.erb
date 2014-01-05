@@ -1,6 +1,6 @@
 <div id="city-container">
 
-	<div class="places_column">
+	<div class="places_column" id="places_column">
 		<% @places = Place.where(:city_id => @city.id) %>
 		<% places_sorted = @places.sort_by{ |name| name[:name] } %>
 
