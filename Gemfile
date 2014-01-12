@@ -45,7 +45,7 @@ gem 'omniauth-facebook'
 #lyrabelacqua309562783
 #JeniaSkorski
 
-gem 'ajaxful_rating', :git => 'git://github.com/edgarjs/ajaxful-rating.git', :branch => "rails3"
+
 
 group :development do
   gem 'sqlite3'
