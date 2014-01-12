@@ -3,6 +3,7 @@
 	<head>
 		<title>Smoke-free-places</title>
 		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 		<script type="text/javascript"
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0tRRnJiXtigILUpFRCcHQch3oKQiO10s&sensor=false"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -11,7 +12,7 @@
 			google.maps.event.addDomListener(window, 'load', initialize);
 		</script>
 
-		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+		
 		
 
 		<%= csrf_meta_tags %>
