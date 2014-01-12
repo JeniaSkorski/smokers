@@ -14,7 +14,7 @@ Smokers::Application.routes.draw do
 
   resources :users
   resources :sessions
-
+  resources :ratings, only: :update
   scope "(:locale)", :locale => /en|he/ do
     resources :cities, :only => [:show]
 

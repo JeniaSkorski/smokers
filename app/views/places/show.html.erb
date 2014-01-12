@@ -103,6 +103,35 @@ data-address= "<%= @place.address.to_json %>"
 	<% end %>
 	</div>-->
 	<h3>Directions To Place TBD</h3>
+	<script>
+  $('#star').raty({
+    readOnly: true,
+    score: <%= @place.average_rating %>,
+    path: '/assets'
+  });
+
+  $('#user_star').raty({
+    score: <%= @rating.score %>,
+    path: '/assets',
+    click: function(score, evt) {
+      $.ajax({
+        url: '/ratings/' + <%= @rating.id %>,
+        type: 'PATCH',
+        data: { score: score }
+      });
+    }
+  });
+</script>
+	
+	<p>
+		Average rating
+	</p>
+	<div id="star"></div>
+
+	<p>
+		Your rating
+	</p>
+	<div id="user_star"></div>
 	<% string = "http://noSmokingPlaces.com/" + @place.id.to_s + "/comments" %>
 	<div class="fb-comments" data-href=<%= string %> data-numposts="5" data-colorscheme="light"></div>
 </div>

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Smoke-free-places</title>
-
+		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 		<script type="text/javascript"
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0tRRnJiXtigILUpFRCcHQch3oKQiO10s&sensor=false"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -12,14 +12,14 @@
 		</script>
 
 		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		
 
 		<%= csrf_meta_tags %>
 	</head>
 	<body class="<%= params[:controller]%>" >
 
 		<div id="fb-root"></div>
-		
+
 		<nav class="navbar navbar-default" role="navigation">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -30,11 +30,10 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="/"> nice logo?</a>
-				
-				
+
 			</div>
-<a id="map-btn" href="/">map</a>
-				<a id="list-btn"href="/">list</a>
+			<a id="map-btn" href="/">map</a>
+			<a id="list-btn"href="/">list</a>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
@@ -53,7 +52,18 @@
 						<a href="#"><%= t('browse cities categories') %></a>
 					</li>
 					<li>
-						<a href="/contact">contact</a>
+
+						<p>
+
+							<% if current_user %>
+							Logged in as <%= current_user.email %>.
+							<%= link_to "Log Out", logout_path %>
+							<% else %>
+							<%= link_to "Sign Up", signup_path %> or
+							<%= link_to "Log In", login_path %>
+							<% end %>
+						</p>
+
 					</li>
 					<li id= "facebook_button">
 

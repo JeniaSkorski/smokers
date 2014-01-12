@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    
-		<h1>message:</h1> 
-		<p><%= @message %></p>
+	<head>
+		<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+	</head>
+	<body>
+
+		<h1>message:</h1>
+		<p>
+			<%= @message %>
+		</p>
 		<h1>address:</h1>
-		<p><%= @address %></p>
+		<p>
+			<%= @address %>
+		</p>
 		<h1>name:</h1>
-		<p><%= @name %><p>
-    
-  </body>
+		<p>
+			<%= @name %>
+		<p>
+			<% if @place_name %>
+			<h1>place name:</h1>
+		<p>
+			<%= @place_name %>
+		<p>
+			<%end%>
+			<%if @place_address%>
+			<h1>address:</h1>
+		<p>
+			<%= @place_address %>
+		<p>
+			<%end%>
+	</body>
 </html>

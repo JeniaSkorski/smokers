@@ -1,0 +1,49 @@
+<div class="well">
+	recommend a place
+
+	<form role="form">
+		<fieldset>
+			<%= form_tag url_for(:action => '????'), :method => 'get' do %>
+			<div class="form-group">
+
+				<div class="field">
+					<%= f.label :name %>
+					<br>
+					<%= f.text_field :name %>
+				</div>
+				<div class="field">
+					<%= f.label :address %>
+					<br>
+					<%= f.text_field :address %>
+				</div>
+				<div class="field">
+					<%= f.label :details %>
+					<br>
+					<%= f.text_area :details %>
+				</div>
+
+				<div class="field">
+					<%= f.label :website %>
+					<br>
+					<%= f.text_field :website %>
+				</div>
+				<%= select_tag(:city_name, options_for_select(City.pluck(:name))) %>
+
+				<% Category.all.each do |category| %>
+				<div>
+					<label><%= category.name%></label>
+					<%= check_box_tag(category.name, value='1')%>
+				</div>
+				<% end %>
+
+				<div class="actions">
+					<%= f.submit %>
+				</div>
+				<% end %>
+
+			</div>
+			<% end %>
+		</fieldset>
+	</form>
+</div>
+

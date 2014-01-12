@@ -13,42 +13,106 @@
 	<div id="my-slideshow" class="well">
 		<ul class="bjqs">
 			<li>
-				In Israel, there is a law against smoking in public places but it is not being enforced  properly in bars,
-				clubs and other night-life facilities.
+				bla
 
 			</li>
-			<li>
-				Customers, employees, entertainers and vendors who spend time in these smoky environments,
-
-				whether voluntary or not, are exposed to the harmful effects of secondhand smoke.
-			</li>
-			<li>
-				We are very aware of the smell that gets in our clothes and our hair,
-
-				but did you know that there are over 7000 chemicals that lead to that smell?
-			</li>
-			<li>
-				Those chemicals cause very real, measurable, expensive and avoidable harm like asthma,
-
-				lung cancer, emphysema, and other chronic diseases.
-			</li>
-			<li>
-				We know that the related costs in both lives and healthcare  are real,
-
-				so why aren’t we doing more to eliminate it?
-			</li>
-			<li>
-				We are offering you to support healthy air quality in all indoors places
-
-				by choosing a smoke free venue from the list above for your next night out.
-			</li>
-
+			
 		</ul>
 	</div>
 
 </div>
 
-<div id= "footer">
+<!-- Button trigger modal contact-->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	contact us
+</button>
 
-</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Hi! bla bla</h4>
+			</div>
+			<div class="modal-body">
+
+				<%= form_tag url_for(:action => 'deliver_mail'), :method => 'get' do %>
+				<div class="form-group">
+
+					<%= text_area_tag 'message','', placeholder: "Message"   %>
+				</div>
+				<div class="form-group">
+
+					<%= email_field_tag 'address','', placeholder: "Email address" %>
+				</div>
+				<div class="form-group">
+					<%= text_field_tag 'name', '', placeholder: "Name"   %>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">
+					Close
+				</button>
+
+				<%= submit_tag "Send" , :class=> "btn btn-primary" %>
+				<% end %>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Button trigger modal recommend-->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#recommend">
+	recommend a place
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="recommend" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Hi! bla bla</h4>
+			</div>
+			<div class="modal-body">
+
+				<%= form_tag url_for(:action => 'deliver_mail'), :method => 'get' do %>
+				<div class="form-group">
+
+					<%= text_area_tag 'message','', placeholder: "Message"   %>
+				</div>
+				<div class="form-group">
+
+					<%= email_field_tag 'address','', placeholder: "Email address" %>
+				</div>
+				<div class="form-group">
+					<%= text_field_tag 'name', '', placeholder: "Name"   %>
+				</div>
+				<div class="form-group">
+					<%= text_field_tag 'place_name', '', placeholder: "Place Name"   %>
+				</div>
+				<div class="form-group">
+					<%= text_field_tag 'place_address', '', placeholder: "Place address"   %>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">
+					Close
+				</button>
+
+				<%= submit_tag "Send" , :class=> "btn btn-primary" %>
+				<% end %>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 

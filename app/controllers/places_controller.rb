@@ -9,7 +9,13 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.json
   def show
-
+    if current_user
+      if Rating.where(place_id: @place.id, user_id: current_user.id).first
+        @rating = Rating.where(place_id: @place.id, user_id: @current_user.id).first
+      else
+        @rating = Rating.create(place_id: @place.id, user_id: current_user.id, score: 0)
+      end
+    end
   end
 
   # GET /places/new
