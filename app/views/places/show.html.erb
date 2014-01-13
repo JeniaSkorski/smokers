@@ -115,5 +115,10 @@ data-address= "<%= @place.address.to_json %>"
 	</p>
 	<div id="user_star"></div>
 	<% string = "http://noSmokingPlaces.com/" + @place.id.to_s + "/comments" %>
+	
+	
 	<div class="fb-comments" data-href=<%= string %> data-numposts="5" data-colorscheme="light"></div>
 </div>
+
+
+
