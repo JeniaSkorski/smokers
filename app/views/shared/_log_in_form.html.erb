@@ -1,0 +1,39 @@
+<!-- Modal -->
+<div class="modal fade" id="log_in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Hi! log in</h4>
+			</div>
+			<div class="modal-body">
+
+				<%= form_tag sessions_path do %>
+				<div class="field">
+
+					<%= text_field_tag :email, params[:email], placeholder: 'email' %>
+				</div>
+				<div class="field">
+
+					<%= password_field_tag :password, '', placeholder:"password"  %>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						Close
+					</button>
+
+					
+						<%= submit_tag "Log In", :class=> "btn btn-primary" %>
+					
+					<% end %>
+
+				</div>
+
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

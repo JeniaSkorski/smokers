@@ -12,13 +12,13 @@ Smokers::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
+  get 'contact', to: 'contact#deliver_mail', as: 'contact', :via => :post
+
   resources :users
   resources :sessions
   resources :ratings, only: :update
   scope "(:locale)", :locale => /en|he/ do
     resources :cities, :only => [:show]
-
-    
 
     resources :places, :only => [:show] do
       resources :reviews
@@ -27,8 +27,8 @@ Smokers::Application.routes.draw do
 
     get 'homepage' => 'homepage#homepage'
     get 'show_selected'=> 'homepage#show_selected', :via => :post
-    get 'contact' => 'homepage#contact', :via => :post
-    get 'deliver_mail' => 'homepage#deliver_mail', :via => :post
+    get 'contact' => 'contact#contact', :via => :post
+   get 'deliver_mail' => 'contact#deliver_mail', :via => :post
   end
 # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".

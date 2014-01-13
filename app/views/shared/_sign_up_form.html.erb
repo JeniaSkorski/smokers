@@ -1,0 +1,55 @@
+<!-- Modal -->
+<div class="modal fade" id="sign_up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Hi! sign up</h4>
+			</div>
+			<div class="modal-body">
+
+				<%= form_for @user do |f| %>
+				<% if @user.errors.any? %>
+				<div class="error_messages">
+					<h2>Form is invalid</h2>
+					<ul>
+						<% @user.errors.full_messages.each do |message| %>
+						<li>
+							<%= message %>
+						</li>
+						<% end %>
+					</ul>
+				</div>
+				<% end %>
+
+				<div class="field">
+
+					<%= f.text_field :email, :placeholder => 'email' %>
+				</div>
+				<div class="field">
+
+					<%= f.password_field :password, :placeholder => "password" %>
+				</div>
+				<div class="field">
+
+					<%= f.password_field :password_confirmation, :placeholder => "password confirmation" %>
+				</div>
+				
+				
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">
+					Close
+				</button>
+					<%= f.submit "Sign Up", :class=> "btn btn-primary" %>
+				
+				<% end %>
+
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

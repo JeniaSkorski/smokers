@@ -11,10 +11,6 @@
 		<script type="text/javascript">
 			google.maps.event.addDomListener(window, 'load', initialize);
 		</script>
-
-		
-		
-
 		<%= csrf_meta_tags %>
 	</head>
 	<body class="<%= params[:controller]%>" >
@@ -38,7 +34,10 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
+					<li >
+						<a href="#"><%= t('About') %></a>
 
+					</li>
 					<li >
 						<a href="#"><%= t('News') %></a>
 
@@ -46,26 +45,28 @@
 					<li>
 						<a href="#"><%= t('Events') %></a>
 					</li>
+
 					<li>
-						<a href="#"><%= t('Q&A') %></a>
-					</li>
-					<li>
-						<a href="#"><%= t('browse cities categories') %></a>
+						<a data-toggle="modal" data-target="#contact"> contact us </a>
 					</li>
 					<li>
 
-						<p>
-
-							<% if current_user %>
-							Logged in as <%= current_user.email %>.
-							<%= link_to "Log Out", logout_path %>
-							<% else %>
-							<%= link_to "Sign Up", signup_path %> or
-							<%= link_to "Log In", login_path %>
-							<% end %>
-						</p>
-
+						<a data-toggle="modal" data-target="#recommend"> recommend a place </a>
 					</li>
+					<li>
+
+						<% if current_user %>
+						Logged in as <%= current_user.email %>.
+						<%= link_to "Log Out", logout_path %>
+						<% else %>
+						<a data-toggle="modal" data-target="#sign_up"> sign up </a>
+					</li>
+					<li>
+						<a data-toggle="modal" data-target="#log_in"> log in </a>
+
+						<% end %>
+					</li>
+					
 					<li id= "facebook_button">
 
 						<div class="addthis_toolbox addthis_32x32_style addthis_default_style">
@@ -95,6 +96,10 @@
 		</nav>
 
 		<%= yield %>
+		<%= render 'shared/sign_up_form' %>
+		<%= render 'shared/log_in_form' %>
+		<%= render 'shared/contact_form' %>
+		<%= render 'shared/recommend_form' %>
 
 	</body>
 </html>
