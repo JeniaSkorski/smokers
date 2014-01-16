@@ -9,10 +9,10 @@ data-address= "<%= @place.address.to_json %>"
 	<div class="well well-sm ">
 		<p>
 			<% if I18n.locale == :en %>
-			<h3><%= @place.name %></h3>
+			<h3><%= @place.name.gsub('-',' ') %></h3>
 			<%end%>
 			<% if I18n.locale == :he %>
-			<h3><%= @place.h_name %></h3>
+			<h3><%= @place.h_name.gsub('-',' ') %></h3>
 			<%end%>
 		</p>
 		<p>
@@ -61,10 +61,10 @@ data-address= "<%= @place.address.to_json %>"
 		<%for place in @place.nearbys(0.5)%>
 		<li>
 			<% if I18n.locale == :en %>
-			<%= link_to place.name, place%> (<%= (place.distance * 1609.34).round(2)%> m)
+			<%= link_to place.name.gsub('-',' '), place%> (<%= (place.distance * 1609.34).round(2)%> m)
 			<%end%>
 			<% if I18n.locale == :he %>
-			<%= link_to place.h_name, place%> (<%= (place.distance * 1609.34).round(2)%> מטרים)
+			<%= link_to place.h_name.gsub('-',' '), place%> (<%= (place.distance * 1609.34).round(2)%> מטרים)
 			<%end%>
 
 		</li>

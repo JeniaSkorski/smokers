@@ -4,21 +4,13 @@
 		<h3 id="mishpat">find a smoke-free venue in your area</h3>
 
 		<%= form_tag url_for( :action => 'show_selected'), :method => 'get', :role => 'form' do %>
-		<%= select_tag(:name, options_for_select(City.pluck(:name) ), {class: "btn btn-default dropdown-toggle"}) %>
+		<%= select_tag(:name, options_for_select(City.make_name_array ), {class: "btn btn-default dropdown-toggle"}) %>
 		<%= submit_tag "Go", :class => "btn btn-default" %>
 		<% end %>
 
 	</div>
 
-	<div id="my-slideshow" class="well">
-		<ul class="bjqs">
-			<li>
-				bla
-
-			</li>
-			
-		</ul>
-	</div>
+	
 
 </div>
 

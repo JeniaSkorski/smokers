@@ -5,10 +5,10 @@
 		<% places_sorted = @places.sort_by{ |name| name[:name] } %>
 
 		<% if I18n.locale == :en %>
-		<h1><%= @places.count %> venues in <%= @city.name %> Area</h1>
+		<h1><%= @places.count %> venues in <%= @city.name.gsub('-',' ') %> Area</h1>
 		<%end%>
 		<% if I18n.locale == :he %>
-		<h1> <%= @city.h_name %> מקומות בילוי באזור <%= @places.count %> </h1>
+		<h1> <%= @city.h_name.gsub('-',' ') %> מקומות בילוי באזור <%= @places.count %> </h1>
 		<%end%>
 
 		<% half_places =places_sorted.count/2 %>
@@ -24,7 +24,7 @@
 
 						<% if I18n.locale == :en %>
 
-						<h3><%= link_to "#{places_sorted[(2*i)+j].name}", places_sorted[(2*i)+j] %></h3>
+						<h3><%= link_to "#{places_sorted[(2*i)+j].name.gsub('-',' ')}", places_sorted[(2*i)+j] %></h3>
 
 						<p>
 							<%= places_sorted[(2*i)+j].categories.map(&:name).join(', ') %>
@@ -38,7 +38,7 @@
 						<%end%>
 						<% if I18n.locale == :he %>
 						<p>
-							<h3><%= link_to "#{places_sorted[(2*i)+j].h_name}", places_sorted[(2*i)+j] %></h3>
+							<h3><%= link_to "#{places_sorted[(2*i)+j].h_name.gsub('-',' ')}", places_sorted[(2*i)+j] %></h3>
 						</p>
 						<p>
 							<%= places_sorted[(2*i)+j].categories.map(&:h_name).join(', ') %>
@@ -67,7 +67,7 @@
 
 						<% if I18n.locale == :en %>
 
-						<h3><%= link_to "#{places_sorted.last.name}", places_sorted.last %></h3>
+						<h3><%= link_to "#{places_sorted.last.name.gsub('-',' ')}", places_sorted.last %></h3>
 
 						<p>
 							<%= places_sorted.last.categories.map(&:name).join(', ') %>
@@ -81,7 +81,7 @@
 						<%end%>
 						<% if I18n.locale == :he %>
 						<p>
-							<h3><%= link_to "#{places_sorted.last.h_name}", places_sorted.last %></h3>
+							<h3><%= link_to "#{places_sorted.last.h_name.gsub('-',' ')}", places_sorted.last %></h3>
 						</p>
 						<p>
 							<%= places_sorted.last.categories.map(&:h_name).join(', ') %>

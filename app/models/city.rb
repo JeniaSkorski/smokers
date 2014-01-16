@@ -10,4 +10,13 @@ class City < ActiveRecord::Base
     location_longitude=places.map(& :longitude).inject{ |sum, el| sum + el }.to_f / places.size
     return [location_lat,location_longitude]
   end
+  
+  def self.make_name_array
+    names = City.pluck(:name)
+    arr = Array.new
+    names.each {|n| arr << [n.gsub('-', ' '),n] }
+    return arr
+  end  
+  
 end
+
