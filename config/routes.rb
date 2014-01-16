@@ -3,7 +3,7 @@ Smokers::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :places, :only => [:show] do
+  resources :places do
     resources :reviews
   end
   resources :categories

@@ -71,40 +71,8 @@ data-address= "<%= @place.address.to_json %>"
 		<%end%>
 	</ul>
 
-	<!--
-	<div id="reviews">
-	<h2><%= pluralize @place.reviews.size, "Review" %></h2>
-
-	<% @place.reviews.each do |review| %>
-	<div class="review">
-	<div class="content"><%= review.content %></div>
-	<em>
-	&mdash;
-	<%= review.name %> gave it
-	<strong><%= pluralize review.rating, "star" %></strong>
-	</em>
-	</div>
-	<% end %>
-
-	<h3>Write a review</h3>
-	<%= form_for [@place, Review.new] do |f| %>
-	<div class="field">
-	<%= f.label :rating %>
-	<%= f.select :rating, 1..5 %>
-	</div>
-	<div class="field">
-	<%= f.label :name, "Your name" %>
-	<%= f.text_field :name %>
-	</div>
-	<div class="field">
-	<%= f.text_area :content, rows: 5, cols: 40 %>
-	</div>
-	<div class="actions"><%= f.submit %></div>
-	<% end %>
-	</div>-->
 	<h3>Directions To Place TBD</h3>
-	
-	
+
 	<p>
 		Average rating
 	</p>
@@ -114,11 +82,28 @@ data-address= "<%= @place.address.to_json %>"
 		Your rating
 	</p>
 	<div id="user_star"></div>
+	
 	<% string = "http://noSmokingPlaces.com/" + @place.id.to_s + "/comments" %>
-	
-	
+
 	<div class="fb-comments" data-href=<%= string %> data-numposts="5" data-colorscheme="light"></div>
 </div>
 
+<script>
+  $('#star').raty({
+    readOnly: true,
+    score: <%= @place.average_rating %>,
+    path: '/assets/images'
+  });
 
-
+  $('#user_star').raty({
+    score: <%= @rating.score %>,
+    path: '/assets',
+    click: function(score, evt) {
+      $.ajax({
+        url: '/ratings/' + <%= @rating.id %>,
+        type: 'PATCH',
+        data: { score: score }
+      });
+    }
+  });
+</script>

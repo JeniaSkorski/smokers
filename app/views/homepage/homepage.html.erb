@@ -1,7 +1,7 @@
 <div id="home-container">
 	<div id="home-box">
-		<h1 id="koteret">Welcome! </h1>
-		<h3 id="mishpat">find a smoke-free venue in your area</h3>
+		
+		<h3 id="mishpat">find a smoke-free bar in your area</h3>
 
 		<%= form_tag url_for( :action => 'show_selected'), :method => 'get', :role => 'form' do %>
 		<%= select_tag(:name, options_for_select(City.make_name_array ), {class: "btn btn-default dropdown-toggle"}) %>
