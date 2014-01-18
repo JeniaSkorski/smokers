@@ -15,8 +15,6 @@ class PlacesController < ApplicationController
       else
         @rating = Rating.create(place_id: @place.id, user_id: current_user.id, score: 0)
       end
-    else
-        @rating = Rating.create(place_id: @place.id, user_id: 0, score: 0)
     end
   end
 

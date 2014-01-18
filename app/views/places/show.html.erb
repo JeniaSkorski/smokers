@@ -8,6 +8,13 @@ data-address= "<%= @place.address.to_json %>"
 <div class="places_column" >
 	<div class="well well-sm ">
 		<p>
+			</br>
+			
+				</br>
+					</br>
+						</br>
+							</br>
+								</br>
 			<% if I18n.locale == :en %>
 			<h3><%= @place.name.gsub('-',' ') %></h3>
 			<%end%>
@@ -87,6 +94,9 @@ data-address= "<%= @place.address.to_json %>"
 
 	<div class="fb-comments" data-href=<%= string %> data-numposts="5" data-colorscheme="light"></div>
 </div>
+
+
+<% @rating ||= Rating.new %>
 
 <script>
   $('#star').raty({
