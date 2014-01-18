@@ -95,16 +95,16 @@ data-address= "<%= @place.address.to_json %>"
 	<div class="fb-comments" data-href=<%= string %> data-numposts="5" data-colorscheme="light"></div>
 </div>
 
-
-<% @rating ||= Rating.new %>
-
 <script>
   $('#star').raty({
     readOnly: true,
     score: <%= @place.average_rating %>,
     path: '/assets/images'
   });
-
+  </script>
+  
+<% if @rating %>
+<script>
   $('#user_star').raty({
     score: <%= @rating.score %>,
     path: '/assets',
@@ -117,3 +117,4 @@ data-address= "<%= @place.address.to_json %>"
     }
   });
 </script>
+<% end %>
