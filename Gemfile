@@ -47,9 +47,7 @@ gem 'omniauth-facebook'
 
 
 
-group :development do
-  gem 'sqlite3'
-end
+
 gem 'taps'
 group :production do
   gem 'pg'
