@@ -94,4 +94,8 @@ class PlacesController < ApplicationController
   def review_params
     params.require(:review).permit(:content, :name, :rating, :place_id, :authenticity_token, :commit)
   end
+  
+
+  
+  
 end

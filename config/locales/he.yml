@@ -30,7 +30,16 @@ he:
   Browse: "נווט"
   News: "חדשות"
   Events: "ארועים"
-  Contact: "צור קשר"
+  Contact: "יצירת קשר"
+  About: "אודות"
+  Average rating: "דירוג ממוצע"
+  Rate this place: "דרג/י את המקום"
+  Nearby Places: "מקומות באזור"
+  recommend a place: "המלץ/י על מקום"
+  sign up: "הרשמה"
+  log in: "כניסה"
+  Log in to rate: "הרשם/י כדי לדרג"
+  
   date:
     abbr_day_names:
     - א

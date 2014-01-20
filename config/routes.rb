@@ -28,7 +28,7 @@ Smokers::Application.routes.draw do
     get 'homepage' => 'homepage#homepage'
     get 'show_selected'=> 'homepage#show_selected', :via => :post
     get 'contact' => 'contact#contact', :via => :post
-   get 'deliver_mail' => 'contact#deliver_mail', :via => :post
+    get 'deliver_mail' => 'contact#deliver_mail', :via => :post
   end
 # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".

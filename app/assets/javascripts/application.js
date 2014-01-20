@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require bootstrap/bootstrap
 //= require_tree .
-//= require raty.min.js
+
 
 
 
@@ -75,7 +75,7 @@ function initialize_place() {
   var contentString = '<h1>' + place_name + '</h1><p><a href="' + place_website + '"target="_blank">' + place_website +'</a> </p>';
   
   var mapOptions = {
-    zoom: 10,
+    zoom: 16,
     center: placeLatlng
   };
   

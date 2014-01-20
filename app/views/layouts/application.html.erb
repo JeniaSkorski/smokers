@@ -19,7 +19,6 @@
 		</script>
 		<script type="text/javascript"
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0tRRnJiXtigILUpFRCcHQch3oKQiO10s&sensor=false"></script>
-		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 		<script type="text/javascript">
 			google.maps.event.addDomListener(window, 'load', initialize);
@@ -64,18 +63,19 @@
 					</li>
 					<li>
 
-						<a data-toggle="modal" data-target="#recommend"> recommend a place </a>
+						<a data-toggle="modal" data-target="#recommend"> <%= t('recommend a place') %> </a>
 					</li>
-					<li>
+					
 
 						<% if current_user %>
-						Logged in as <%= current_user.email %>.
-						<%= link_to "Log Out", logout_path %>
+						<li id="username"> <%= current_user.email %></li>
+						<li><%= link_to "Log Out", logout_path %></li>
 						<% else %>
-						<a data-toggle="modal" data-target="#sign_up"> sign up </a>
+					<li>	<a data-toggle="modal" data-target="#sign_up"> <%= t('sign up') %></a>
+					
 					</li>
 					<li>
-						<a data-toggle="modal" data-target="#log_in"> log in </a>
+						<a data-toggle="modal" data-target="#log_in"> <%= t('log in') %> </a>
 
 						<% end %>
 					</li>

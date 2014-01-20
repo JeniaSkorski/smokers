@@ -9,17 +9,21 @@ data-address= "<%= @place.address.to_json %>"
 	<div class="well well-sm ">
 		<p>
 			</br>
-			
-				</br>
-					</br>
-						</br>
-							</br>
-								</br>
+
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
 			<% if I18n.locale == :en %>
-			<h3><%= @place.name.gsub('-',' ') %></h3>
+			<div class="pub-name">
+				<%= @place.name.gsub('-',' ') %>
+			</div>
 			<%end%>
 			<% if I18n.locale == :he %>
-			<h3><%= @place.h_name.gsub('-',' ') %></h3>
+			<div class="pub-name">
+				<%= @place.h_name.gsub('-',' ') %>
+			</div>
 			<%end%>
 		</p>
 		<p>
@@ -54,7 +58,23 @@ data-address= "<%= @place.address.to_json %>"
 		<a href="<%= @place.website %>"> visit website </a>
 
 		</p>
+		<div>
+			<%= t('Average rating') %>	
 
+			<div id="star"></div>
+		</div>
+		
+		
+		<div>
+			<% if current_user %>
+			<%= t('Rate this place') %>
+			
+			<%else%>
+			<%= t('Log in to rate') %>
+			<%end%>
+			
+			<div id="user_star"></div>
+		</div>
 	</div>
 
 	<% if I18n.locale == :en %>
@@ -80,41 +100,38 @@ data-address= "<%= @place.address.to_json %>"
 
 	<h3>Directions To Place TBD</h3>
 
-	<p>
-		Average rating
-	</p>
-	<div id="star"></div>
-
-	<p>
-		Your rating
-	</p>
-	<div id="user_star"></div>
-	
 	<% string = "http://noSmokingPlaces.com/" + @place.id.to_s + "/comments" %>
 
 	<div class="fb-comments" data-href=<%= string %> data-numposts="5" data-colorscheme="light"></div>
 </div>
 
 <script>
-  $('#star').raty({
-    readOnly: true,
-    score: <%= @place.average_rating %>,
-    path: '/assets/images'
-  });
-  </script>
-  
+		jQuery(document).ready(function(){
+
+	$('#star').raty({
+	readOnly: true,
+	start: <%= @place.average_rating %>
+		, path: '/assets'
+		});
+		});
+</script>
+
 <% if @rating %>
 <script>
-  $('#user_star').raty({
-    score: <%= @rating.score %>,
-    path: '/assets',
-    click: function(score, evt) {
-      $.ajax({
-        url: '/ratings/' + <%= @rating.id %>,
-        type: 'PATCH',
-        data: { score: score }
-      });
-    }
-  });
+		jQuery(document).ready(function(){
+
+	$('#user_star').raty({
+	start: <%= @rating.score %>,
+	path: '/assets',
+	click: function(score, evt) {
+	$.ajax({
+	url: '/ratings/' + <%= @rating.id %>
+			, type: 'PATCH',
+	data: { score:score,place_id: <%= @place.id %>
+		}
+		});
+		}
+		});
+		});
 </script>
 <% end %>

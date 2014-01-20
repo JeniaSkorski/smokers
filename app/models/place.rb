@@ -11,8 +11,9 @@ class Place < ActiveRecord::Base
     return 0
 
     else
-      ratings.sum(:score) / ratings.size
+      r = (ratings.sum(:score).to_f / ratings.size).round
     end
+    #raise r.to_s
   end
 
 end
