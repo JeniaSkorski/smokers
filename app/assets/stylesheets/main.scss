@@ -9,8 +9,11 @@
   }
 
 body {
-  
-  
+  font-family: "PT Sans", Arial, Helvetica, sans-serif !important;
+}
+
+body ul, p{
+  font-family: "PT Sans", Arial, Helvetica, sans-serif !important;
 }
 #map-canvas { 
    
@@ -111,28 +114,9 @@ height: 32px;
 width: 32px;
 }
 
-.homepage {
+
   #map-btn{display:none;}
   #list-btn{display:none;}
-}
-
-.well .bar-name {
-  
-  color:  #774B77;
-  
-}
- 
-  
-.bar-name {
-  a, a:visited, a:hover{
-    background: none;
-    color:  #774B77;
-    font-weight: bold;
-    font-size: 20px;
-  }
-  
-}
-
 
 
 
@@ -150,11 +134,52 @@ box-shadow: 2px 2px 2px #888888;
 }
 
 
+
+.bar-name{
+   font-weight: bold;
+   font-size: 20px;
+}
+  
+.bar-name-list {
+  a, a:visited, a:hover{
+    background: none;
+    color:  #774B77;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+}
+
+.places-count {
+  font-size: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.places-count-hb {
+  text-align:right;
+  font-size: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 #username {
   color: white;
    padding-top: 16px;
   
 }
+
+.nearby-places{
+    font-weight: bold;
+    font-size: 20px;
+  li, a, a:visited, a:hover{
+    background: none;
+    color:  #774B77;
+    font-weight: bold;
+    font-size: 20px;
+    //text-decoration: none; 
+  }
+}
+
+
 @media all and (max-width: 500px){
   #map-canvas { 
     right:0;

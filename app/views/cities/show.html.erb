@@ -4,15 +4,27 @@
 		<% @places = Place.where(:city_id => @city.id) %>
 		<% places_sorted = @places.sort_by{ |name| name[:name] } %>
 
-		<% if I18n.locale == :en %>
-		<h1>
+	<% if I18n.locale == :en %>
+
 		<div class="places-count">
-			<%= @places.count %> bars in <%= @city.name.gsub('-',' ') %> Area
-		</div></h1>
-		<%end%>
-		<% if I18n.locale == :he %>
-		<h1> מקומות בילוי באזור <%= @city.h_name.gsub('-',' ') %> <%= @places.count %> </h1>
-		<%end%>
+			<% if @places.count == 1%>
+				<%= @places.count %> bar in <%= @city.name.gsub('-',' ') %> Area
+			<%else%>
+				<%= @places.count %> bars in <%= @city.name.gsub('-',' ') %> Area
+
+			<%end%>
+		</div>
+	<%end%>
+		
+	<% if I18n.locale == :he %>
+		<div class="places-count-hb">
+			<% if @places.count == 1%>
+				 בר <%= @places.count %> באזור <%= @city.h_name.gsub('-',' ') %>
+			<%else%>
+				 ברים   <%= @places.count %> באזור <%= @city.h_name.gsub('-',' ') %>
+			<%end%>
+		 </div>	
+	<%end%>
 
 		<% places_sorted.each do |place| %>
 
@@ -20,60 +32,49 @@
 
 			<% if I18n.locale == :en %>
 
-			<div class="bar-name">
-				<%= link_to "#{place.name.gsub('-',' ')}", place %>
+				<div class="bar-name-list">
+					<%= link_to "#{place.name.gsub('-',' ')}", place %>
 
-			</div>
+				</div>	
 
-			<p>
-				<%= place.categories.map(&:name).join(', ') %>
-			</p>
-			
-			<p>
-				<%= place.address %>
-			</p>
-			<p>
-				<%= place.details %>
-			</p>
-			
-			<div id= <%= 'star' +  place.id.to_s %>> </div>
+				<p>
+					<%= place.categories.map(&:name).join(', ') %>
+				</p>
+
+				<p>
+					<%= place.address %>
+				</p>
+				<p>
+					<%= place.details %>
+				</p>
 				
-			
 
 			<%end%>
 
 			<% if I18n.locale == :he %>
-			<p>
+				
 				<div class= "bar-name">
 					<%= link_to "#{place.h_name.gsub('-',' ')}", place %>
 				</div>
-			</p>
-			<p>
-				<%= place.categories.map(&:h_name).join(', ') %>
-			</p>
-			<p>
-				<%= place.h_address %>
-			</p>
-			<p>
-				<%= place.h_details %>
-			</p>
+			
+				<p>
+					<%= place.categories.map(&:h_name).join(', ') %>
+				</p>
+				<p>
+					<%= place.h_address %>
+				</p>
+				<p>
+					<%= place.h_details %>
+				</p>
 			<%end%>
-			<p>
-				<a href="<%= place.website %>">visit website </a>
-			</p>
+				<% id = 'star' +  place.id.to_s %>
+				<div id= <%= id %>></div>
+				<p>
+					<a href="<%= place.website %>">visit website </a>
+				</p>
 
 		</div>
-		<script>
-					jQuery(document).ready(function(){
-
-					$('#star').raty({
-					readOnly: true,
-					start: <%= place.average_rating %>,
-					path: '/assets',
-					
-						});
-						});
-		</script>
+		<script>rateplaces( "<%= id %>",<%= place.average_rating %>);</script>
 		<% end %>
 
 	</div>

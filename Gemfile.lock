@@ -74,6 +74,8 @@ GEM
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
     geocoder (1.1.9)
+    google-webfonts (0.1.2)
+      actionpack (>= 3.0.0)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -210,6 +212,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 4.0.0)
   geocoder
+  google-webfonts
   jbuilder (~> 1.2)
   jquery-rails
   omniauth-facebook

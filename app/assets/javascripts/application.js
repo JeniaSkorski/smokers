@@ -110,8 +110,17 @@ jQuery(document).ready(function($) {
     	$('#places_column').show();
     	$('#map-canvas').hide();
     });
-    
+
 });
 
+function rateplaces(id, avg_rating){
+	var string = "#"+id+"";
+	$(string).raty({
+	readOnly: true,
+	start: avg_rating
+		, path: '/assets'
+		});
+		
 
+}
 

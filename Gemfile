@@ -45,7 +45,7 @@ gem 'omniauth-facebook'
 #lyrabelacqua309562783
 #JeniaSkorski
 
-
+gem 'google-webfonts'
 
 
 gem 'taps'
