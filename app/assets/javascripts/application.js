@@ -95,11 +95,7 @@ google.maps.event.addListener(marker, 'click', function() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 jQuery(document).ready(function($) {
-    $('#my-slideshow').bjqs({
-        'height' : 320,
-        'width' : 620,
-        'responsive' : true
-    });
+    
     $('#map-btn').click(function(e) {
     	e.preventDefault();
     	$('#places_column').hide();
