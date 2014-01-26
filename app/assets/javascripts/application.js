@@ -12,10 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.raty.js
 //= require turbolinks
 //= require bootstrap/bootstrap
 //= require_tree .
-//= require jquery.raty.js
+
 
 
 
