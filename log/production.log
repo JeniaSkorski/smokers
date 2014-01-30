@@ -1,7 +1,0 @@
-W, [2014-01-04T15:34:54.411131 #22026]  WARN -- : WARNING: box-shadow is deprecated and will be removed in the next major version release
-         on line 7 of /home/alon/.rvm/gems/ruby-2.0.0-p247/gems/bourbon-3.1.8/app/assets/stylesheets/_bourbon-deprecated-upcoming.scss, in `box-shadow'
-         from line 12 of /home/alon/.rvm/gems/ruby-2.0.0-p247/bundler/gems/active_admin-7ee54a9bacdd/app/assets/stylesheets/active_admin/components/_modal_dialog.scss
-         from line 15 of /home/alon/.rvm/gems/ruby-2.0.0-p247/bundler/gems/active_admin-7ee54a9bacdd/app/assets/stylesheets/active_admin/_base.css.scss
-         from line 12 of /home/bla/smokers/vendor/assets/stylesheets/active_admin.css.scss
-
-
