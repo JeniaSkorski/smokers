@@ -54,6 +54,10 @@ group :production do
   gem "activerecord-postgresql-adapter"
   gem 'rails_12factor'
 end
+
+gem 'jscrollpane-rails'
+gem 'jquery-mousewheel-rails'
+gem 'mwheelintent-rails'
 # Use unicorn as the app server
 # gem 'unicorn'f
 

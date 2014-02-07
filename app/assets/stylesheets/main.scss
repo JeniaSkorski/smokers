@@ -15,88 +15,91 @@ body {
 body ul, p{
   font-family: "PT Sans", Arial, Helvetica, sans-serif !important;
 }
-#map-canvas { 
-   
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    
-    border-right: 1px solid gray;
-    right: 50%;
-    }
 
-.places_column {
+#places-column {
     padding-left: 50px;
     position: absolute;
     top: 0;
     left: 50%;
     bottom: 0;
     right: 0;
-   
     overflow-y:scroll;
    
     }
 
+#h-places-column{
+    padding-left: 50px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    bottom: 0;
+    right: 0;
+    text-align:right;
+    overflow-y:scroll;
+   }
 
-#footer {
-  clear: both;
-  margin: 0;
-  padding: .5em;
-  color: #333;
-  background-color: #ddd;
-  border-top: 1px solid gray;
-  bottom:0;
-  width:100%;
-  height:60px; 
- }
+#map-canvas { 
+   
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    border-right: 1px solid gray;
+    right: 50%;
+    margin-left: 20px;
+    margin-top: 55px;
+    }
+
+
+
+//#footer {
+ // clear: both;
+  //margin: 0;
+  //padding: .5em;
+  //color: #333;
+  //background-color: #ddd;
+  //border-top: 1px solid gray;
+  //bottom:0;
+  //width:100%;
+  //height:60px; 
+// }
 
 
 #home-container {
-  //background-image:url('cherry_3-wallpaper-1366x768.jpg');
-  
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-bottom:100px;
-  //height:100%;
-  max-width: 100%;
-}
-
-#home-box {
-  
-  margin-bottom:10px 0px; padding:0px;
-  text-align:left;
-  padding-left: 80px;
-  padding-top: 80px;
-  padding-bottom: 40px;
-  color: black;
+ width: 100%; 
  
-  
+ padding: 50px;
+ margin-top: 50px;
+ color: white;
+ background-color: rgba(0, 0, 0, 0.7);
 }
+#h-home-container {
+ width: 100%; 
+ padding: 50px;
+ float: right;
+ margin-top: 50px;
+ color: white;
+ background-color: rgba(0, 0, 0, 0.7);
+ text-align: right;
+ direction: rtl;
+}
+ 
 
-#home-box h1 {
-  
-  font-size: 40px;
-}
 
 .navbar {
   margin-bottom: 0px;
   z-index:10;
+  //opacity: 0.1;
+  
+  background: none;
+  border: none; 
+  a:hover{
+    font-weight: bold;
+  }
 }
 
-#my-slideshow {
-  margin-left: 80px;
-  
-
-}
-#my-slideshow li{
- 
-
-  font-size: 25px;
-  line-height:120%;
-  
-  color:#383838;
-    
+.navbar li {
+  font-size: 16px;
 }
 
 #facebook_button {
@@ -121,7 +124,9 @@ width: 32px;
 
 
 .bar-container {
-border-radius: 8px;
+margin-right: 25px;
+margin-bottom: 5px;
+//border-radius: 8px;
 box-shadow: 2px 2px 2px #888888;
 //background: #e4f5fc; /* Old browsers */
 //background: -moz-linear-gradient(top, #e4f5fc 0%, #2ab0ed 100%); /* FF3.6+ */
@@ -139,11 +144,15 @@ box-shadow: 2px 2px 2px #888888;
    font-weight: bold;
    font-size: 20px;
 }
+#h-bar-name{
+   font-weight: bold;
+   font-size: 20px;
+}
   
 .bar-name-list {
   a, a:visited, a:hover{
     background: none;
-    color:  #774B77;
+    color:  #7292B2;
     font-weight: bold;
     font-size: 20px;
   }
@@ -154,6 +163,7 @@ box-shadow: 2px 2px 2px #888888;
   font-size: 30px;
   padding-top: 10px;
   padding-bottom: 10px;
+  color: white; 
 }
 .places-count-hb {
   text-align:right;
@@ -167,29 +177,92 @@ box-shadow: 2px 2px 2px #888888;
   
 }
 
-.nearby-places{
-    font-weight: bold;
-    font-size: 20px;
-  li, a, a:visited, a:hover{
-    background: none;
-    color:  #774B77;
-    font-weight: bold;
-    font-size: 20px;
-    //text-decoration: none; 
-  }
-}
+
 
 
 @media all and (max-width: 500px){
   #map-canvas { 
     right:0;
   }
-  .places_column {
+  #places_column {
    left: 0px;
   }
 }
 //on full screen:
     //#map-btn{display:none;}
     //#list-btn{display:none;}
+
+.h-form{
+  text-align: right;
+}
+
+#place-column{
+    
+    padding-left: 50px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    bottom: 0;
+    right: 0;
+    overflow-y:scroll;
+    margin-top:54px;
+    
+}
+
+#h-place-column{
+    text-align: right; 
+    padding-left: 50px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    bottom: 0;
+    right: 0;
+    overflow-y:scroll;
+}
+
+
+
+#nearby-places-box{
+    font-weight: bold;
+    font-size: 20px;
+    li, a, a:visited, a:hover{
+      background: none;
+      color:  #774B77;
+      font-weight: bold;
+      font-size: 20px;
+      list-style-type: none; 
+  }
+}
+#nearby-places {
+   font-weight: bold;
+   font-size: 20px;
+}
+
+#h-nearby-places-box{
+    font-weight: bold;
+    font-size: 20px;
+    li, a, a:visited, a:hover{
+      background: none;
+      color:  #774B77;
+      font-weight: bold;
+      font-size: 20px;
+      list-style-type: none;
+  }
+}
+#h-nearby-places {
+   font-weight: bold;
+   font-size: 20px;
+}
+
+
+.main-container{
+  
+  background-image:url('night.jpg');
+  background-size: 100%;
+}
+
+#map-canvas {
+  //border-radius:5px;
+}
 
 

@@ -1,0 +1,48 @@
+<div id="h-home-container">
+	<div id="h-home-box">
+
+		<h1>מקומות בילוי ללא עישון</h1>
+	
+		<p>
+בלה בלה בלה
+		</p>
+		<p>
+בלה בלה בלה
+		</p>
+		<p>
+בלה בלה בלה
+		</p>
+		<p>
+			באיזו עיר תרצה לבלות
+		</p>
+
+		<%= form_tag url_for( :action => 'show_selected'), :method => 'get' do %>
+		<%= hidden_field_tag(:locale, "he") %>
+		<%= submit_tag "חיפוש",  :class => "btn btn-default" %>
+		<%= select_tag(:h_name, options_for_select(City.pluck(:h_name)), {class: "btn btn-default dropdown-toggle"}) %>
+		
+		<% end %>
+	</div>
+	
+	 <div id="myCarousel" class="carousel slide">
+	 	<!-- Indicators -->
+  		<ol class="carousel-indicators">
+    		<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    		<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        </ol>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div class="active item">
+                   <%= image_tag("puppy.jpg") %>
+                  
+            </div>   
+            <div class="item">
+                  
+                   <%= image_tag("puppy2.jpg") %>
+            </div>                  
+        </div>
+            <!-- Carousel nav -->
+            <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+</div>

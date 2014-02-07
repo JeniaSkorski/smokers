@@ -1,85 +1,81 @@
+<% @places = Place.where(:city_id => @city.id) %>
+<% places_sorted = @places.sort_by{ |name| name[:name] } %>
 <div id="city-container">
-
-	<div class="places_column" id="places_column">
-		<% @places = Place.where(:city_id => @city.id) %>
-		<% places_sorted = @places.sort_by{ |name| name[:name] } %>
-
 	<% if I18n.locale == :en %>
+		<div id="places-column">
+			<div class="places-count">
+				<% if @places.count == 1%>
+					<%= @places.count %> Bar in <%= @city.name.gsub('-',' ') %> Area
+				<%else%>
+					<%= @places.count %> Bars in <%= @city.name.gsub('-',' ') %> Area
 
-		<div class="places-count">
-			<% if @places.count == 1%>
-				<%= @places.count %> bar in <%= @city.name.gsub('-',' ') %> Area
-			<%else%>
-				<%= @places.count %> bars in <%= @city.name.gsub('-',' ') %> Area
-
-			<%end%>
-		</div>
-	<%end%>
-		
+				<%end%>
+			</div>
+			</br>
+			<% places_sorted.each do |place| %>
+				<div class="well bar-container">
+					<div class="bar-name-list">
+						<%= link_to "#{place.name.gsub('-',' ')}", place %>
+					</div>	
+					<p>
+						<%= place.categories.map(&:name).join(', ') %>
+					</p>
+					<p>
+						<%= place.address %>
+					</p>
+					<p>
+						<%= place.details %>
+					</p>
+					<% id = 'star' +  place.id.to_s %>
+					<div id= <%= id %>></div>
+					<script>$(document).ready(rateplaces( "<%= id %>",<%= place.average_rating %>));</script>
+					<p>
+						<a href="<%= place.website %>">visit website </a>
+					</p>
+				</div> <!--bar-container-->
+			<%end%><!--places loop-->
+		</div><!--places_column-->
+	<%end%><!--English -->
+	
 	<% if I18n.locale == :he %>
-		<div class="places-count-hb">
-			<% if @places.count == 1%>
-				 בר <%= @places.count %> באזור <%= @city.h_name.gsub('-',' ') %>
-			<%else%>
-				 ברים   <%= @places.count %> באזור <%= @city.h_name.gsub('-',' ') %>
-			<%end%>
-		 </div>	
-	<%end%>
-
-		<% places_sorted.each do |place| %>
-
-		<div class="well well-sm bar-container">
-
-			<% if I18n.locale == :en %>
-
-				<div class="bar-name-list">
-					<%= link_to "#{place.name.gsub('-',' ')}", place %>
-
-				</div>	
-
-				<p>
-					<%= place.categories.map(&:name).join(', ') %>
-				</p>
-
-				<p>
-					<%= place.address %>
-				</p>
-				<p>
-					<%= place.details %>
-				</p>
-				
-
-			<%end%>
-
-			<% if I18n.locale == :he %>
-				
-				<div class= "bar-name">
-					<%= link_to "#{place.h_name.gsub('-',' ')}", place %>
+			<div id="h-places-column">
+				<div class="places-count">
+					<% if @places.count == 1%>
+						<%= @places.count %> בר 1 <%= @city.h_name.gsub('-',' ') %> באזור
+					<%else%>
+						<%= @places.count %> ברים <%= @city.h_name.gsub('-',' ') %> באזור
+	
+					<%end%>
 				</div>
-			
-				<p>
-					<%= place.categories.map(&:h_name).join(', ') %>
-				</p>
-				<p>
-					<%= place.h_address %>
-				</p>
-				<p>
-					<%= place.h_details %>
-				</p>
-			<%end%>
-				<% id = 'star' +  place.id.to_s %>
-				<div id= <%= id %>></div>
-				<p>
-					<a href="<%= place.website %>">visit website </a>
-				</p>
-
-		</div>
-		<script>rateplaces( "<%= id %>",<%= place.average_rating %>);</script>
-		<% end %>
-
-	</div>
-
-	<div id="map-canvas" data-center="<%= @city.location.to_json%>"
+				</br>
+				<% places_sorted.each do |place| %>
+					
+					<div class="well bar-container">
+						<div class="bar-name-list">
+							<% place_url = "/he/places/" + place.id.to_s %>
+							<a href="<%= place_url %>"><%= place.h_name.gsub('-',' ')%></a>
+						
+						</div>	
+						<p>
+							<%= place.categories.map(&:h_name).join(', ') %>
+						</p>
+						<p>
+							<%= place.h_address %>
+						</p>
+						<p>
+							<%= place.h_details %>
+						</p>
+						<% id = 'star' +  place.id.to_s %>
+						<div id= <%= id %>></div>
+						<script>$(document).ready(rateplaces( "<%= id %>",<%= place.average_rating %>));</script>
+						<p>
+							<a href="<%= place.website %>">אתר </a>
+						</p>
+					</div> <!--bar-container-->
+				<%end%><!--places loop-->
+			</div><!--places_column-->
+		<%end%><!--Hebrew -->
+<div id="map-canvas" data-center="<%= @city.location.to_json%>"
 	data-places= "<%= @places.to_json %>"
 	></div>
 

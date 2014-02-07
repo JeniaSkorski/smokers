@@ -1,39 +1,56 @@
-<!-- Modal -->
-<div class="modal fade" id="log_in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
-				<h4 class="modal-title" id="myModalLabel">Hi! log in</h4>
-			</div>
-			<div class="modal-body">
-
-				<%= form_tag sessions_path do %>
-				<div class="field">
-
-					<%= text_field_tag :email, params[:email], :class => "form-control", placeholder: 'email' %>
-				</div>
-				<div class="field">
-
-					<%= password_field_tag :password, '', :class => "form-control", placeholder:"password"  %>
-				</div>
-
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">
-						Close
+<% if I18n.locale == :en %>
+	<!-- Modal -->
+	<div class="modal fade" id="log-in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
 					</button>
-
-					
-						<%= submit_tag "Log In", :class=> "btn btn-primary" %>
-					
-					<% end %>
-
+					<h4 class="modal-title" id="myModalLabel">Log in</h4>
 				</div>
-
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
+				<div class="modal-body">
+					<%= form_tag sessions_path do %>
+						<div class="field">
+							<%= text_field_tag :email, params[:email], :class => "form-control", placeholder: 'email' %>
+						</div>
+						<div class="field">
+							<%= password_field_tag :password, '', :class => "form-control", placeholder: 'password'  %>
+						</div>
+						<div class="modal-footer">
+							<%= submit_tag 'log in', :class=> "btn btn-warning" %>		
+					<% end %>
+						</div>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<% end %>	
+<% if I18n.locale == :he %>
+	<!-- Modal -->
+	<div class="modal fade" id="h-log-in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+					<h4 class="modal-title h-form" id="myModalLabel">כניסה</h4>
+				</div>
+				<div class="modal-body">
+					<%= form_tag sessions_path do %>
+						<div class="field">
+							<%= text_field_tag :email, params[:email], :class => "form-control h-form", placeholder: t('Email') %>
+						</div>
+						<div class="field">
+							<%= password_field_tag :password, '', :class => "form-control h-form", placeholder: t('Password')  %>
+						</div>
+						<div class="modal-footer">
+							<%= submit_tag t('Log in'), :class=> "btn btn-warning h-form" %>		
+					<% end %>
+						</div>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<% end %>	

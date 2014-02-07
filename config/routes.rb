@@ -17,6 +17,9 @@ Smokers::Application.routes.draw do
   resources :users
   resources :sessions
   resources :ratings, only: :update
+  get "about" => "static_pages#about"
+  get "news" => "static_pages#news"
+  get "events" => "static_pages#events"
   scope "(:locale)", :locale => /en|he/ do
     resources :cities, :only => [:show]
 

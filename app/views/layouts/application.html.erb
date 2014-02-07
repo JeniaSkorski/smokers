@@ -26,41 +26,42 @@
 		</script>
 		<%= csrf_meta_tags %>
 	</head>
-	<body class="<%= params[:controller]%>" >
+	<body class="<%= params[:controller]%> main-container" >
 
 		<div id="fb-root"></div>
-
+		
+		<!--English nav-->
+		<% if I18n.locale == :en %>
 		<nav class="navbar navbar-default" role="navigation">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/">logo</a>
-
-			</div>
+			 <div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">Home</a>
+				</div>
 			<a id="map-btn" href="/">map</a>
 			<a id="list-btn"href="/">list</a>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li >
-						<a href="#"><%= t('About') %></a>
-
+						<%= link_to(t('About'),{:controller => 'static_pages', :action => 'about'} )%>
 					</li>
 					<li >
-						<a href="#"><%= t('News') %></a>
+						<%= link_to(t('News'),{:controller => 'static_pages', :action => 'news'} )%>
 
 					</li>
 					<li>
-						<a href="#"><%= t('Events') %></a>
+						<%= link_to(t('Events'),{:controller => 'static_pages', :action => 'events'} )%>
 					</li>
 
 					<li>
-						<a data-toggle="modal" data-target="#contact"> contact us </a>
+						<a data-toggle="modal" data-target="#contact"> Contact Us </a>
 					</li>
 					
 
@@ -83,15 +84,15 @@
 				        <ul class="dropdown-menu">
 				        <li><a data-toggle="modal" data-target="#recommend"> <%= t('recommend a place') %> </a></li>
 				        <li class="divider"></li>
-				        <li><%= link_to "Log Out", logout_path %></li>
+				        <li><%= link_to t('Log Out'), logout_path %></li>
 				        </ul>
 				      </li>
 					<% else %>
-					<li>	<a data-toggle="modal" data-target="#sign_up"> <%= t('sign up') %></a>
+					<li>	<a data-toggle="modal" data-target="#sign-up"> <%= t('Sign up') %></a>
 					
 					</li>
 					<li>
-						<a data-toggle="modal" data-target="#log_in"> <%= t('log in') %> </a>
+						<a data-toggle="modal" data-target="#log-in"> <%= t('log in') %> </a>
 
 						<% end %>
 					</li>
@@ -108,8 +109,95 @@
 
 				</ul>
 			</div><!-- /.navbar-collapse -->
+			</div>
 		</nav>
+		<%end%>
+		
+		<!--Hebrew nav-->
+		<% if I18n.locale == :he %>
+		<nav class="navbar navbar-default" role="navigation">
+			 <div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header navbar-right">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/he">דף הבית</a>
+				</div>
+			<a id="map-btn" href="/">map</a>
+			<a id="list-btn"href="/">list</a>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a data-toggle="modal" data-target="#h-contact"> צרו קשר</a>
+					</li>
+					
 
+					<li id= "facebook_button">
+
+						<div class="addthis_toolbox addthis_32x32_style addthis_default_style">
+							<a class="addthis_button_facebook_follow" addthis:userid="NonSmokingPlaces"></a>
+
+						</div>
+						<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52bb37753e186b7d"></script>
+						<!-- AddThis Follow END -->
+					</li>
+
+					<li>
+						<%= link_to(t('Events'),{:controller => 'static_pages', :action => 'events'} )%>
+					</li>
+					
+					<li >
+						<%= link_to(t('News'),{:controller => 'static_pages', :action => 'news'} )%>
+
+					</li>
+					<li >
+						<%= link_to(t('About'),{:controller => 'static_pages', :action => 'about'} )%>
+					</li>
+
+					
+				</ul>
+
+				<ul class="nav navbar-nav">
+					<% if I18n.locale == :he %>
+					<li>
+						<%= link_to_unless I18n.locale == :en, "English", locale: :en %>
+					</li>
+					<% end %>
+					<% if I18n.locale == :en %>
+					<li>
+						<%= link_to_unless I18n.locale == :he, "עברית", locale: :he %>
+					</li>
+					<% end %>
+					<% if current_user %>
+					<li class="dropdown">
+				        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %><b class="caret"></b></a>
+				        <ul class="dropdown-menu">
+				        <li><a data-toggle="modal" data-target="#h-recommend"> <%= t('recommend a place') %> </a></li>
+				        <li class="divider"></li>
+				        <li><%= link_to t('Log Out'), logout_path %></li>
+				        </ul>
+				      </li>
+					<% else %>
+					<li>	<a data-toggle="modal" data-target="#h-sign-up"> <%= t('Sign up') %></a>
+					
+					</li>
+					<li>
+						<a data-toggle="modal" data-target="#h-log-in"> <%= t('Log in') %> </a>
+
+						<% end %>
+					</li>
+					
+
+				</ul>
+			</div><!-- /.navbar-collapse -->
+			</div>
+		</nav>
+		<%end%>
 		<%= yield %>
 		<%= render 'shared/sign_up_form' %>
 		<%= render 'shared/log_in_form' %>

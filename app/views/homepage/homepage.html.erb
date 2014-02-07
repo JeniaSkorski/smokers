@@ -1,20 +1,28 @@
-<div id="home-container">
-	<div id="home-box">
+<% places = Place.all.count %> 
+<% if I18n.locale == :en %>
+	<div id="home-container">
 		
-		<h3 id="mishpat">find a smoke-free bar in your area</h3>
-
-		<%= form_tag url_for( :action => 'show_selected'), :method => 'get', :role => 'form' do %>
-		<%= select_tag(:name, options_for_select(City.make_name_array ), {class: "btn btn-default dropdown-toggle"}) %>
-		<%= submit_tag "Go", :class => "btn btn-default" %>
-		<% end %>
-
-	</div>
-
+			
+			<h1>Find a Smoke-free Bar in Your Area</h1>
+			<h3>Out of <%=places%>  Places All over Israel</h3>
+			
+			<%= form_tag url_for( :action => 'show_selected'), :method => 'get', :role => 'form' do %>
+			<%= select_tag(:name, options_for_select(City.make_name_array ), {class: "btn btn-default dropdown-toggle"}) %>
+			<%= submit_tag "Go!", :class => "btn btn-default" %>
+			<% end %>
+	</div>					
+<% end %>
+<% if I18n.locale == :he %>
+	<div id="h-home-container">
+		
 	
-
-</div>
-
-
-
-
-
+			<h1>מצא מקום בילוי ללא עישון באזורך</h1>
+			<h3>מתוך <%=places%> מקומות בילוי בישראל</h3>
+			<%= form_tag url_for( :action => 'show_selected'), :method => 'get' do %>
+		<%= hidden_field_tag(:locale, "he") %>
+		
+		<%= select_tag(:h_name, options_for_select(City.pluck(:h_name)), {class: "h-form btn btn-default dropdown-toggle"}) %>
+		<%= submit_tag "חיפוש",  :class => "btn btn-default" %>
+			<% end %>
+	</div>
+<% end %>

@@ -4,7 +4,9 @@ class HomepageController < ApplicationController
     #gets params from homepage form, in database filters places, goes to places_filter.html.erb
 
   end
-
+  def homepage_he
+    
+  end
   def show_selected
     #sends form to selected view
 

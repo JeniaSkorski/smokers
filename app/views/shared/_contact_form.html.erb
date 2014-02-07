@@ -1,6 +1,8 @@
+<% if I18n.locale == :en %>
 <!-- Modal -->
 <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
+		
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -9,29 +11,57 @@
 				<h4 class="modal-title" id="myModalLabel">Hi! contact us</h4>
 			</div>
 			<div class="modal-body">
-
-				<%= form_tag url_for(:action => 'deliver_mail', :controller => 'contact'), :method => 'get' do %>
+					<%= form_tag url_for(:action => 'deliver_mail', :controller => 'contact'), :method => 'get' do %>
 				<div class="form-group">
-
-					<%= text_area_tag 'message','', :class => "form-control", placeholder:  "t('Message')"   %>
+					<%= text_area_tag 'message','', :class => "form-control", placeholder:  "Message"  %>
 				</div>
 				<div class="form-group">
-
 					<%= email_field_tag 'address','', :class => "form-control", placeholder: "Email address" %>
 				</div>
 				<div class="form-group">
-					<%= text_field_tag 'name', '', :class => "form-control", placeholder: "Name"   %>
+					<%= text_field_tag 'name', '', :class => "form-control", placeholder: "Name" %>
 				</div>
 
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">
-					Close
-				</button>
 
-				<%= submit_tag "Send" , :class=> "btn btn-primary" %>
+				<%= submit_tag "Send" , :class=> "btn btn-warning" %>
 				<% end %>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<% end %>
+<% if I18n.locale == :he %>
+<!-- Modal -->
+<div class="modal fade" id="h-contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title h-form" id="myModalLabel">צרו קשר</h4>
+			</div>
+			<div class="modal-body">
+					<%= form_tag url_for(:action => 'deliver_mail', :controller => 'contact'), :method => 'get' do %>
+				<div class="form-group">
+					<%= text_area_tag 'message','', :class => "form-control h-form", placeholder:  t('Message')  %>
+				</div>
+				<div class="form-group">
+					<%= email_field_tag 'address','', :class => "form-control h-form", placeholder: t('Email') %>
+				</div>
+				<div class="form-group">
+					<%= text_field_tag 'name', '', :class => "form-control h-form", placeholder: t('Name') %>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+
+				<%= submit_tag t('Send') , :class=> "btn btn-warning h-form" %>
+				<% end %>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<% end %>

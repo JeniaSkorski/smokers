@@ -21,11 +21,17 @@
 
 
 he: 
+  Password: "ססמא"
+  Password confirmation: "ססמא שוב"
+  Close: "סגירה"
+  Email: "כתובת מייל"
+  Send: "שליחה"
   hello: "שלום"
   Name: "שם"
   Address: "כתובת"
   Details: "פרטים"
   Website: "אתר"
+  Message: "הודעה"
   Search: "חיפוש"
   Browse: "נווט"
   News: "חדשות"
@@ -35,11 +41,11 @@ he:
   Average rating: "דירוג ממוצע"
   Rate this place: "דרג/י את המקום"
   Nearby Places: "מקומות באזור"
-  recommend a place: "המלץ/י על מקום"
-  sign up: "הרשמה"
-  log in: "כניסה"
-  Log in to rate: "הרשם/י כדי לדרג"
-  
+  recommend a place: "המלצה על מקום"
+  Sign up: "הרשמה"
+  Log in: "כניסה"
+  Log in to rate: "הרשמ/י כדי לדרג"
+  Log Out: "יציאה"
   date:
     abbr_day_names:
     - א
