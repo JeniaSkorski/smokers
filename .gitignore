@@ -2,3 +2,7 @@
 .hg*
 tmp/*
 *.log
+
+.bundle
+log/*.log
+
