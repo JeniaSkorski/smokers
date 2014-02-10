@@ -98,9 +98,19 @@ body ul, p{
   }
 }
 
-.navbar li {
+.navbar > .container-fluid .navbar-brand {
+  color: white;
+}
+.navbar-default .navbar-nav > li > a {
+  color: white;
   font-size: 16px;
 }
+
+.navbar-default .navbar-nav > li > a :hover {
+  color: white;
+   font-size: 16px;
+}
+
 
 #facebook_button {
   padding-top: 10px;  
@@ -117,9 +127,6 @@ height: 32px;
 width: 32px;
 }
 
-
-  #map-btn{display:none;}
-  #list-btn{display:none;}
 
 
 
@@ -180,17 +187,17 @@ box-shadow: 2px 2px 2px #888888;
 
 
 
-@media all and (max-width: 500px){
+@media all and (max-width: 768px){
   #map-canvas { 
-    right:0;
+    
+    width: 100%;
   }
   #places_column {
-   left: 0px;
+   
+   width: 100%;
+   
   }
 }
-//on full screen:
-    //#map-btn{display:none;}
-    //#list-btn{display:none;}
 
 .h-form{
   text-align: right;
@@ -265,4 +272,6 @@ box-shadow: 2px 2px 2px #888888;
   //border-radius:5px;
 }
 
-
+.about {
+  
+}
