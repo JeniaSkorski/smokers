@@ -116,19 +116,6 @@ body ul, p{
   padding-top: 10px;  
   
 }
-li .envelope{
-
-padding: none;
-}
-.envelope {
-  
-margin-bottom: 10px;  
-height: 32px; 
-width: 32px;
-}
-
-
-
 
 .bar-container {
 margin-right: 25px;
@@ -189,14 +176,29 @@ box-shadow: 2px 2px 2px #888888;
 
 @media all and (max-width: 768px){
   #map-canvas { 
-    
+    margin-left: 0;
     width: 100%;
   }
-  #places_column {
-   
+  #places-column {
+   padding-left: 0;
    width: 100%;
-   
+   left: 0;
   }
+  #h-places-column {
+   padding-left: 0;
+   width: 100%;
+   left: 0;
+  }
+
+
+
+}
+
+@media all and (max-width: 768px){
+.bar-container {
+margin-right: 0;
+margin-bottom: 1px;
+}
 }
 
 .h-form{

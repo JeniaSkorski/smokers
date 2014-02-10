@@ -225,12 +225,25 @@ jQuery(document).ready(function($) {
 
 	$('#map-btn').click(function(e) {
 		e.preventDefault();
-		$('#places_column').hide();
+		$('#places-column').hide();
 		$('#map-canvas').show();
+		
 	});
 	$('#list-btn').click(function(e) {
 		e.preventDefault();
-		$('#places_column').show();
+		$('#places-column').show();
+		$('#map-canvas').hide();
+	});
+	
+	$('#h-map-btn').click(function(e) {
+		e.preventDefault();
+		$('#h-places-column').hide();
+		$('#map-canvas').show();
+		
+	});
+	$('#h-list-btn').click(function(e) {
+		e.preventDefault();
+		$('#h-places-column').show();
 		$('#map-canvas').hide();
 	});
 
