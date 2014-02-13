@@ -106,7 +106,7 @@ function initialize() {
 			
 		});
 		markers.push(marker);
-		contentStrings[i] = '<h1>' + places[i].name + '</h1><p><a href="' + places[i].website + '"target="_blank"> visit website </a> </p>';
+		contentStrings[i] = '<a id="infobox" href= "/places/' + places[i].id +  '"><h3>' + places[i].name + '</h3></a><p>' +places[i].address+ '</p>';
 
 		google.maps.event.addListener(marker, 'click', (function(marker, i) {
 			return function() {
@@ -136,7 +136,7 @@ function initialize_place() {
 
 	var placeLatlng = new google.maps.LatLng(place_lat, place_lng);
 
-	var contentString = '<h1>' + place_name + '</h1>';
+	var contentString = '<h3>' + place_name + '</h3>';
 
 	var mapOptions = {
 		zoom : 16,
@@ -223,6 +223,26 @@ function initialize_place() {
 
 jQuery(document).ready(function($) {
 
+	// $(document).on('click', "#map-btn", function() {
+		// $('#city-container').addClass('map-view');
+		 // $('#city-container').removeClass('list-view');
+	// });
+	// $(document).on('click', "#list-btn", function() {
+		// $('#city-container').removeClass('map-view');
+		 // $('#city-container').addClass('list-view');
+	// });
+
+
+	 // $('#map-btn').click(function(e) {
+		 // e.preventDefault();
+		 // $('#city-container').addClass('map-view');
+		 // $('#city-container').removeClass('list-view');
+	 // });
+	 // $('#list-btn').click(function(e) {
+		 // e.preventDefault();
+		 // $('#city-container').addClass('list-view');
+		 // $('#city-container').removeClass('map-view');
+	 // });
 	$('#map-btn').click(function(e) {
 		e.preventDefault();
 		$('#places-column').hide();
@@ -233,8 +253,10 @@ jQuery(document).ready(function($) {
 		e.preventDefault();
 		$('#places-column').show();
 		$('#map-canvas').hide();
+		
+		
 	});
-	
+ 	
 	$('#h-map-btn').click(function(e) {
 		e.preventDefault();
 		$('#h-places-column').hide();

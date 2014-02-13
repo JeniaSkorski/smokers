@@ -7,18 +7,8 @@
 		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 		<!--facebook comments-->
-		<div id="fb-root"></div>
-		<script>
-			( function(d, s, id) {
-					var js, fjs = d.getElementsByTagName(s)[0];
-					if (d.getElementById(id))
-						return;
-					js = d.createElement(s);
-					js.id = id;
-					js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=644565478915600";
-					fjs.parentNode.insertBefore(js, fjs);
-				}(document, 'script', 'facebook-jssdk'));
-		</script>
+		
+		
 		<script type="text/javascript"
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0tRRnJiXtigILUpFRCcHQch3oKQiO10s&sensor=false"></script>
 
@@ -37,10 +27,9 @@
 			 <div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				
-			<ul>
-				<a id="map-btn" class="visible-xs btn btn-default" href="/">map</a>
-				<a id="list-btn" class="visible-xs btn btn-default" href="/">list</a>
-			</ul>
+			
+				
+			
 			
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
