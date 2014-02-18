@@ -2,10 +2,7 @@
 <% places_sorted = @places.sort_by{ |name| name[:name] } %>
 <div id="city-container">
 	<% if I18n.locale == :en %>
-	<div>
-		<a id="map-btn" class="visible-xs btn btn-default" href="/">map</a>
-		<a id="list-btn" class="visible-xs btn btn-default" href="/">list</a>
-	</div>	
+	
 		<div id="places-column">
 			<div class="places-count">
 				<% if @places.count == 1%>

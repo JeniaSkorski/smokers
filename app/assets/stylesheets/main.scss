@@ -1,4 +1,25 @@
 @import "../../../vendor/assets/stylesheets/bootstrap/bootstrap.scss";
+
+@media all and (max-width: 768px){
+   #map-canvas { 
+     margin-left: 0 !important;
+     width: 100% !important;
+   }
+   #places-column {
+   display: none;
+    }
+  
+   #h-places-column {
+  display: none !important;
+   }
+ 
+ 
+ 
+ }
+
+
+
+
 #city-container {
       position: absolute;
       top: 52px;
@@ -122,14 +143,6 @@ margin-right: 25px;
 margin-bottom: 5px;
 //border-radius: 8px;
 box-shadow: 2px 2px 2px #888888;
-//background: #e4f5fc; /* Old browsers */
-//background: -moz-linear-gradient(top, #e4f5fc 0%, #2ab0ed 100%); /* FF3.6+ */
-//background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e4f5fc), color-stop(100%,#2ab0ed)); /* Chrome,Safari4+ */
-//background: -webkit-linear-gradient(top, #e4f5fc 0%,#2ab0ed 100%); /* Chrome10+,Safari5.1+ */
-//background: -o-linear-gradient(top, #e4f5fc 0%,#2ab0ed 100%); /* Opera 11.10+ */
-//background: -ms-linear-gradient(top, #e4f5fc 0%,#2ab0ed 100%); /* IE10+ */
-//background: linear-gradient(to bottom, #e4f5fc 0%,#2ab0ed 100%); /* W3C */
-//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f5fc', endColorstr='#2ab0ed',GradientType=0 ); /* IE6-9 */
 }
 
 
@@ -170,47 +183,33 @@ box-shadow: 2px 2px 2px #888888;
    padding-top: 16px;
   
 }
-// .map-view  #map-canvas{
-  // margin-left: 0;
-  // width: 100%;
-// }
-// .map-view #places-column{
-  // display: none; 
-// }
-// 
-// .list-view  #places-column{
-  // padding-left: 0;
-  // width: 100%;
-  // left: 0;
-// }
-// 
-// .list-view  #map-canvas{
-   // display: none; 
-//   
-// }
 
-// @media all and (max-width: 768px){
-  // #map-canvas { 
-    // margin-left: 0;
-    // width: 100%;
-  // }
-  // #places-column {
-   // padding-left: 0;
-   // width: 100%;
-   // left: 0;
-  // }
-  // #h-places-column {
-   // padding-left: 0;
-   // width: 100%;
-   // left: 0;
-  // }
-// }
-// @media all and (max-width: 768px){
-// .bar-container {
-// margin-right: 0;
-// margin-bottom: 1px;
-// }
-// }
+
+
+.list-view  #places-column{
+  padding-left: 0;
+  width: 100%;
+  left: 0;
+  display: initial;
+}
+.list-view .bar-container {
+margin-right: 0px;
+}
+.list-view  #map-canvas{
+   display: none; 
+  
+}
+
+
+#map-btn{
+  float: left;
+  margin-top: 10px;
+}
+
+#list-btn{
+  float: left;
+  margin-top: 10px;
+}
 
 .h-form{
   text-align: right;
@@ -290,4 +289,3 @@ box-shadow: 2px 2px 2px #888888;
 #infobox, a:hover  {
   color: #7292B2;
 }
-

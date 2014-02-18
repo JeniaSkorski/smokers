@@ -223,52 +223,19 @@ function initialize_place() {
 
 jQuery(document).ready(function($) {
 
-	// $(document).on('click', "#map-btn", function() {
-		// $('#city-container').addClass('map-view');
-		 // $('#city-container').removeClass('list-view');
-	// });
-	// $(document).on('click', "#list-btn", function() {
-		// $('#city-container').removeClass('map-view');
-		 // $('#city-container').addClass('list-view');
-	// });
 
-
-	 // $('#map-btn').click(function(e) {
-		 // e.preventDefault();
-		 // $('#city-container').addClass('map-view');
-		 // $('#city-container').removeClass('list-view');
-	 // });
-	 // $('#list-btn').click(function(e) {
-		 // e.preventDefault();
-		 // $('#city-container').addClass('list-view');
-		 // $('#city-container').removeClass('map-view');
-	 // });
 	$('#map-btn').click(function(e) {
 		e.preventDefault();
-		$('#places-column').hide();
-		$('#map-canvas').show();
-		
+		$('#city-container').removeClass('list-view');
 	});
 	$('#list-btn').click(function(e) {
 		e.preventDefault();
-		$('#places-column').show();
-		$('#map-canvas').hide();
-		
-		
-	});
- 	
-	$('#h-map-btn').click(function(e) {
-		e.preventDefault();
-		$('#h-places-column').hide();
-		$('#map-canvas').show();
-		
-	});
-	$('#h-list-btn').click(function(e) {
-		e.preventDefault();
-		$('#h-places-column').show();
-		$('#map-canvas').hide();
+		$('#city-container').addClass('list-view');
 	});
 
+
+
+	  
 });
 
 function rateplaces(id, avg_rating) {
