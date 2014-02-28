@@ -33,7 +33,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Home</a>
+      <% if params[:controller] != "homepage" %>
+     	 <a class="navbar-brand" href="/">Home</a>
+      <%end%>
       	<% if params[:controller] == "cities" %>
       		<a id="map-btn" class="visible-xs btn btn-default" href="/">map</a>
 	  		<a id="list-btn" class="visible-xs btn btn-default" href="/">list</a>
@@ -114,10 +116,23 @@
 		
 		<!--Hebrew nav-->
 		<% if I18n.locale == :he %>
-		<nav class="navbar navbar-default" role="navigation">
+		<nav class="navbar navbar-default h-nav" role="navigation">
 			 <div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
-				
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <% if params[:controller] != "homepage" %>
+     	 <a class="navbar-brand" href="/">ראשי</a>
+      <%end%>
+      	<% if params[:controller] == "cities" %>
+      		<a id="h-map-btn" class="visible-xs btn btn-default" href="/">מפה</a>
+	  		<a id="h-list-btn" class="visible-xs btn btn-default" href="/">רשימה</a>
+   		<%end%>
+    </div>
 			
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -148,7 +163,7 @@
 					<li >
 						<%= link_to(t('About'),{:controller => 'static_pages', :action => 'about'} )%>
 					</li>
-					<a class="navbar-brand" href="/he">ראשי</a>
+					
 					
 				</ul>
 
@@ -193,6 +208,10 @@
 		<%= render 'shared/log_in_form' %>
 		<%= render 'shared/contact_form' %>
 		<%= render 'shared/recommend_form' %>
-
+<div id="lang_div" style="visibility:hidden;">
+	<% if I18n.locale == :en %>en<%end%>
+	<% if I18n.locale == :he %>he<%end%>
+</div>
 	</body>
+	
 </html>

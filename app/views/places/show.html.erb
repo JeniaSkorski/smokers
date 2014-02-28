@@ -1,14 +1,14 @@
 <div id="city-container">
-<div id="map-canvas" data-name="<%= @place.name.to_json%>" data-website="<%= @place.website.to_json%>" data-lat="<%= @place.latitude.to_json%>" data-lng="<%= @place.longitude.to_json%>"
-data-address= "<%= @place.address.to_json %>"
+<div id="map-canvas" data-name="<%= @place.name.to_json%>" data-h-name="<%= @place.h_name.to_json%>" data-website="<%= @place.website.to_json%>" data-lat="<%= @place.latitude.to_json%>" data-lng="<%= @place.longitude.to_json%>"
+data-address= "<%= @place.address.to_json %>" data-h-address= "<%= @place.h_address.to_json %>"
 ></div>
 
 <script>initialize_place();</script>
 
 <% if I18n.locale == :en %>
-	<div id="place-column" >
+	<div class="well" id="place-column" >
 	
-		<div class="well">
+		
 			<div class="bar-name">
 				<%= @place.name.gsub('-',' ') %>
 			</div>
@@ -36,9 +36,9 @@ data-address= "<%= @place.address.to_json %>"
 				<%end%>
 					<div id="user_star"></div>
 			</div>
-		</div>
+		
 	
-		<div id="nearby-places-box" class="well">
+		<div id="nearby-places-box" >
 			<div id="nearby-places">Nearby Places</div>
 			<ul>
 				<%for place in @place.nearbys(0.5)%>
@@ -86,8 +86,8 @@ jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</scrip
 
 
 <% if I18n.locale == :he %>
-	<div id="h-place-column" >
-		<div class="well">
+	<div class="well" id="h-place-column" >
+		
 			<div id="h-bar-name">
 				<%= @place.h_name.gsub('-',' ') %>
 			</div>
@@ -116,9 +116,9 @@ jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</scrip
 				<%end%>
 					<div id="user_star"></div>
 			</div>
-		</div>
+		
 	
-		<div id= "h-nearby-places-box" class="well">
+		<div id= "h-nearby-places-box">
 			<div id= "h-nearby-places">  מקומות בילוי באזור  
 			</div>	
 			<ul>
