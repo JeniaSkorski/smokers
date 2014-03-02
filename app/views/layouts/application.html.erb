@@ -48,13 +48,7 @@
 					<li >
 						<%= link_to(t('About'),{:controller => 'static_pages', :action => 'about'} )%>
 					</li>
-					<li >
-						<%= link_to(t('News'),{:controller => 'static_pages', :action => 'news'} )%>
-
-					</li>
-					<li>
-						<%= link_to(t('Events'),{:controller => 'static_pages', :action => 'events'} )%>
-					</li>
+					
 
 					<li>
 						<a data-toggle="modal" data-target="#contact"> Contact Us </a>
@@ -63,12 +57,7 @@
 
 					<li id= "facebook_button">
 
-						<div class="addthis_toolbox addthis_32x32_style addthis_default_style">
-							<a class="addthis_button_facebook_follow" addthis:userid="NonSmokingPlaces"></a>
-
-						</div>
-						<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52bb37753e186b7d"></script>
-						<!-- AddThis Follow END -->
+						<div class="fb-like" data-href="https://www.facebook.com/NonSmokingPlaces" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
 					</li>
 					<li>
 						
@@ -117,7 +106,7 @@
 		<!--Hebrew nav-->
 		<% if I18n.locale == :he %>
 		<nav class="navbar navbar-default h-nav" role="navigation">
-			 <div class="container-fluid">
+			 <div class="container-fluid navbar-right">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -126,7 +115,7 @@
         <span class="icon-bar"></span>
       </button>
       <% if params[:controller] != "homepage" %>
-     	 <a class="navbar-brand" href="/">ראשי</a>
+     	 <a class="navbar-brand" href="/he">ראשי</a>
       <%end%>
       	<% if params[:controller] == "cities" %>
       		<a id="h-map-btn" class="visible-xs btn btn-default" href="/">מפה</a>
@@ -144,22 +133,10 @@
 
 					<li id= "facebook_button">
 
-						<div class="addthis_toolbox addthis_32x32_style addthis_default_style">
-							<a class="addthis_button_facebook_follow" addthis:userid="NonSmokingPlaces"></a>
-
-						</div>
-						<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52bb37753e186b7d"></script>
-						<!-- AddThis Follow END -->
+						<div class="fb-like" data-href="https://www.facebook.com/NonSmokingPlaces" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
 					</li>
 
-					<li>
-						<%= link_to(t('Events'),{:controller => 'static_pages', :action => 'events'} )%>
-					</li>
 					
-					<li >
-						<%= link_to(t('News'),{:controller => 'static_pages', :action => 'news'} )%>
-
-					</li>
 					<li >
 						<%= link_to(t('About'),{:controller => 'static_pages', :action => 'about'} )%>
 					</li>

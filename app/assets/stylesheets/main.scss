@@ -16,6 +16,12 @@
     background-color: black;
     direction: rtl;
    }
+ 
+  body.main-container{
+    background-repeat:no-repeat;
+    background-size: auto 100%;
+  }
+ 
  }
 
 
@@ -126,21 +132,21 @@ body ul, p{
 }
 
 .navbar > .container-fluid .navbar-brand {
-  color: white;
+  color: white !important;
 }
 .navbar-default .navbar-nav > li > a {
-  color: white;
+  color: white !important;
   font-size: 16px;
 }
 
 .navbar-default .navbar-nav > li > a :hover {
-  color: white;
+  color: white !important;
    font-size: 16px;
 }
 
 
 #facebook_button {
-  padding-top: 10px;  
+  padding-top: 15px;  
   
 }
 
@@ -315,10 +321,7 @@ margin-right: 0px;
 
 
 
-  body.main-container{
-    //background-repeat:no-repeat;
-    //background-size: auto 100%;
-  }
+ 
 
 html{
    height: 100%;

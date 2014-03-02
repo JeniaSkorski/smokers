@@ -150,7 +150,7 @@ function initialize_place() {
 
 	var placeLatlng = new google.maps.LatLng(place_lat, place_lng);
 	
-	//console.log(document.getElementById("lang_div").innerHTML.replace(/\W/g, ''));	
+	//console.log($("lang_div").innerHTML.replace(/\W/g, ''));	
 	
 	var contentString = '<h3>' + place_name + '</h3><p>' + place_address + '</p>';
 
@@ -271,13 +271,13 @@ function rateplaces(id, avg_rating) {
 		path : '/assets'
 	});
 
-}( function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id))
-			return;
-		js = d.createElement(s);
-		js.id = id;
-		js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=644565478915600";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
+}
 
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=644565478915600";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
