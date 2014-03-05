@@ -39,12 +39,11 @@
 	
 	<% if I18n.locale == :he %>
 			<div id="h-places-column">
-				<div class="places-count">
+				<div class="h-places-count places-count">
 					<% if @places.count == 1%>
-						 <span><%= t('1 bar in area') %>  <%= @city.h_name.gsub('-',' ')%></span>
+						<%= t('1 bar in area') %>  <%= @city.h_name.gsub('-',' ')%>
 					<%else%>
-					 <span> <%= @places.count %> </span>
-					 <span><%= t('bars in area') %>  <%= @city.h_name.gsub('-',' ')%></span>
+					  <%= @places.count %> <%= t('bars in area') %>  <%= @city.h_name.gsub('-',' ')%>
 	 				
 					<%end%>
 				</div>

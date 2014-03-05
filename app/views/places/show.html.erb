@@ -105,8 +105,9 @@ jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</scrip
 				<%= @place.h_details %>
 			</div>
 			<% unless @place.website.blank? %>
-				<div class="website">	
-					<a href="<%= @place.website %>" target="_blank"> אתר </a>
+				<div class="website">
+					<%= link_to @place.website,url_with_protocol(@place.website), :target => '_blank'%>	
+					
 				</div>	
 			<%end%>
 			<div>
@@ -119,7 +120,7 @@ jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</scrip
 				<%else%>
 					<%= t('Log in to rate') %>
 				<%end%>
-					<div id="user_star"></div>
+					<div class="h-star" id="user_star"></div>
 			</div>
 		
 	

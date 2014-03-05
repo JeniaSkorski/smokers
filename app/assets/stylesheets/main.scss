@@ -129,8 +129,17 @@ body ul, p{
   a:hover{
     font-weight: bold;
   }
+  a:focus{background: none !important;
+  }
 }
 
+.h-star{
+  
+  float: right;
+}
+.h-nav{
+  direction: rtl;
+}
 .navbar > .container-fluid .navbar-brand {
   color: white !important;
 }
@@ -177,7 +186,10 @@ box-shadow: 2px 2px 2px #888888;
   }
   
 }
-
+.h-places-count{
+  
+  direction: rtl;
+}
 .places-count {
   font-size: 30px;
   padding-top: 10px;
