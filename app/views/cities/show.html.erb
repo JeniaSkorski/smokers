@@ -30,9 +30,7 @@
 					<% id = 'star' +  place.id.to_s %>
 					<div id= <%= id %>></div>
 					<script>$(document).ready(rateplaces( "<%= id %>",<%= place.average_rating %>));</script>
-					<p>
-						<a href="<%= place.website %>">visit website </a>
-					</p>
+					
 				</div> <!--bar-container-->
 			<%end%><!--places loop-->
 		</div><!--places_column-->
@@ -43,10 +41,11 @@
 			<div id="h-places-column">
 				<div class="places-count">
 					<% if @places.count == 1%>
-						<%= @places.count %> בר 1 <%= @city.h_name.gsub('-',' ') %> באזור
+						 <span><%= t('1 bar in area') %>  <%= @city.h_name.gsub('-',' ')%></span>
 					<%else%>
-						<%= @places.count %> ברים <%= @city.h_name.gsub('-',' ') %> באזור
-	
+					 <span> <%= @places.count %> </span>
+					 <span><%= t('bars in area') %>  <%= @city.h_name.gsub('-',' ')%></span>
+	 				
 					<%end%>
 				</div>
 				</br>
@@ -70,9 +69,7 @@
 						<% id = 'star' +  place.id.to_s %>
 						<div id= <%= id %>></div>
 						<script>$(document).ready(rateplaces( "<%= id %>",<%= place.average_rating %>));</script>
-						<p>
-							<a href="<%= place.website %>">אתר </a>
-						</p>
+						
 					</div> <!--bar-container-->
 				<%end%><!--places loop-->
 			</div><!--places_column-->

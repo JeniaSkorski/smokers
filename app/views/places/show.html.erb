@@ -15,15 +15,18 @@ data-address= "<%= @place.address.to_json %>" data-h-address= "<%= @place.h_addr
 			<div>	
 				<%= @place.categories.map(&:name).join(', ') %>
 			</div>
-			<div>
+			<div id="address">
 				<%= @place.address %>
 			</div>
-			<div>some more details here
+			<div id="details">some more details here
 				<%= @place.details %>
 			</div>
-			<div>	
-				<a href="<%= @place.website %>"> visit website </a>
-			</div>	
+			<% unless @place.website.blank? %>
+				<div class="website">
+					<%= link_to @place.website,url_with_protocol(@place.website), :target => '_blank'%>	
+					
+				</div>	
+			<%end%>
 			<div>
 				<%= t('Average rating') %>	
 				<div id="star"></div>
@@ -94,16 +97,18 @@ jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</scrip
 			<div>	
 				<%= @place.categories.map(&:h_name).join(', ') %>
 			</div>
-			<div>
+			<div id="h-address">
 				<%= @place.h_address %>
 			</div>
-			<div>
+			<div id="h-details">
 				כל מיני פרטים נוספים כאן
 				<%= @place.h_details %>
 			</div>
-			<div>	
-				<a href="<%= @place.website %>"> visit website </a>
-			</div>	
+			<% unless @place.website.blank? %>
+				<div class="website">	
+					<a href="<%= @place.website %>" target="_blank"> אתר </a>
+				</div>	
+			<%end%>
 			<div>
 				<%= t('Average rating') %>	
 				<div id="star"></div>
@@ -124,7 +129,9 @@ jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</scrip
 			<ul>
 				<%for place in @place.nearbys(0.5)%>
 					<li>
-						<%= link_to place.h_name.gsub('-',' '), place%> (<%= (place.distance * 1609.34).round(2)%> מטרים)
+						<% place_url = "/he/places/" + place.id.to_s %>
+							<a href="<%= place_url %>"><%= place.h_name.gsub('-',' ')%>(<%= (place.distance * 1609.34).round(2)%> מטרים)</a>
+						
 					</li>
 				<%end%>
 			</ul>
@@ -163,3 +170,4 @@ jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</scrip
 <% end %>
 </div>
 <%end%>
+

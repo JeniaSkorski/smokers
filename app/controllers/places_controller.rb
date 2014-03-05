@@ -85,7 +85,7 @@ class PlacesController < ApplicationController
   def set_place
     @place = Place.find(params[:id])
   end
-
+  
   # Never trust parameters from the scary internet, only allow the white list through.
   def place_params
     params.require(:place).permit(:city_name, :name, :city_id,  :category_id, :h_name, :address, :h_address, :h_details, :details,  :latitude, :longitude, :website)
@@ -94,8 +94,4 @@ class PlacesController < ApplicationController
   def review_params
     params.require(:review).permit(:content, :name, :rating, :place_id, :authenticity_token, :commit)
   end
-  
-
-  
-  
 end

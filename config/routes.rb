@@ -3,10 +3,10 @@ Smokers::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :places do
+  resources :places, :only => [:show] do
     resources :reviews
   end
-  resources :categories
+  resources :categories, :only => [:show]
   resources :cities, :only => [:show]
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

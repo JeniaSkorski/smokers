@@ -182,7 +182,8 @@ box-shadow: 2px 2px 2px #888888;
   font-size: 30px;
   padding-top: 10px;
   padding-bottom: 10px;
-  color: white; 
+  color: white;
+  margin-right: 25px; 
 }
 .places-count-hb {
   text-align:right;
@@ -269,33 +270,52 @@ margin-right: 0px;
     margin-top:54px;
 }
 
+#address, #h-address {
+  color: #999;
+}
 
+#details, #h-details {
+  padding-top:10px;
+    padding-bottom:10px;
+}
 
 #nearby-places-box{
+    padding-top:10px;
+    padding-bottom:10px;
     font-weight: bold;
     font-size: 20px;
     li, a, a:visited, a:hover{
       background: none;
-      color:  #774B77;
+      color:  #7292B2;
       font-weight: bold;
-      font-size: 20px;
-      list-style-type: none; 
+      font-size: 13px;
+      list-style-type: none;
+      
+  }
+  ul {
+     padding: 0px;
   }
 }
 #nearby-places {
    font-weight: bold;
    font-size: 20px;
+  
 }
 
 #h-nearby-places-box{
+    padding-top:10px;
+    padding-bottom:10px;
     font-weight: bold;
     font-size: 20px;
     li, a, a:visited, a:hover{
+      
       background: none;
-      color:  #774B77;
+      color:  #7292B2;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 13px;
       list-style-type: none;
+      direction: rtl;
+      
   }
 }
 #h-nearby-places {
@@ -306,7 +326,7 @@ margin-right: 0px;
 
 .main-container{
   
-  background-image:url('night.jpg');
+  background-image:url('nightedited.jpg');
   background-size: 100%;
 }
 
@@ -338,5 +358,14 @@ html{
   margin-top: 10px;
 }
  
+.website {
+   a, a:visited, a:hover{
+      background: none;
+      color:  #7292B2;
+      font-weight: bold;
+      font-size: 13px;
+      list-style-type: none;
+      } 
+}
 
 
