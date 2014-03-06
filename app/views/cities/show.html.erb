@@ -28,8 +28,11 @@
 						<%= place.details %>
 					</p>
 					<% id = 'star' +  place.id.to_s %>
-					<div id= <%= id %>></div>
-					<script>$(document).ready(rateplaces( "<%= id %>",<%= place.average_rating %>));</script>
+					<div id="<%= id %>"></div>
+					
+					<% content_for :scripts do %>
+						<script>$(document).ready(rateplaces( "<%= id %>",<%= place.average_rating %>));</script>
+					<% end %>
 					
 				</div> <!--bar-container-->
 			<%end%><!--places loop-->
@@ -38,44 +41,46 @@
 	<%end%><!--English -->
 	
 	<% if I18n.locale == :he %>
-			<div id="h-places-column">
-				<div class="h-places-count places-count">
-					<% if @places.count == 1%>
-						<%= t('1 bar in area') %>  <%= @city.h_name.gsub('-',' ')%>
-					<%else%>
-					  <%= @places.count %> <%= t('bars in area') %>  <%= @city.h_name.gsub('-',' ')%>
-	 				
-					<%end%>
-				</div>
-				</br>
-				<% places_sorted.each do |place| %>
+		<div id="h-places-column">
+			<div class="h-places-count places-count">
+				<% if @places.count == 1%>
+					<%= t('1 bar in area') %>  <%= @city.h_name.gsub('-',' ')%>
+				<%else%>
+				  <%= @places.count %> <%= t('bars in area') %>  <%= @city.h_name.gsub('-',' ')%>
+ 				
+				<%end%>
+			</div>
+			</br>
+			<% places_sorted.each do |place| %>
+				
+				<div class="well bar-container">
+					<div class="bar-name-list">
+						<% place_url = "/he/places/" + place.id.to_s %>
+						<a href="<%= place_url %>"><%= place.h_name.gsub('-',' ')%></a>
+					</div>	
+					<p>
+						<%= place.categories.map(&:h_name).join(', ') %>
+					</p>
+					<p>
+						<%= place.h_address %>
+					</p>
+					<p>
+						<%= place.h_details %>
+					</p>
 					
-					<div class="well bar-container">
-						<div class="bar-name-list">
-							<% place_url = "/he/places/" + place.id.to_s %>
-							<a href="<%= place_url %>"><%= place.h_name.gsub('-',' ')%></a>
-						
-						</div>	
-						<p>
-							<%= place.categories.map(&:h_name).join(', ') %>
-						</p>
-						<p>
-							<%= place.h_address %>
-						</p>
-						<p>
-							<%= place.h_details %>
-						</p>
-						<% id = 'star' +  place.id.to_s %>
-						<div id= <%= id %>></div>
+					<% id = 'star' +  place.id.to_s %>
+					<div id="<%= id %>"></div>
+
+					<% content_for :scripts do %>
 						<script>$(document).ready(rateplaces( "<%= id %>",<%= place.average_rating %>));</script>
-						
-					</div> <!--bar-container-->
-				<%end%><!--places loop-->
-			</div><!--places_column-->
-		<%end%><!--Hebrew -->
-<div id="map-canvas" data-center="<%= @city.location.to_json%>"
-	data-places= "<%= @places.to_json %>"
-	></div>
+					<% end %>
+					
+				</div> <!--bar-container-->
+			<%end%><!--places loop-->
+		</div><!--places_column-->
+	<%end%><!--Hebrew -->
+
+	<div id="map-canvas" data-center="<%= @city.location.to_json%>" data-places= "<%= @places.to_json %>"></div>
 
 </div>
 

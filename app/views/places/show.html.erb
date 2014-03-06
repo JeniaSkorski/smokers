@@ -1,13 +1,20 @@
 <div id="city-container">
-<div id="map-canvas" data-name="<%= @place.name.to_json%>" data-h-name="<%= @place.h_name.to_json%>" data-website="<%= @place.website.to_json%>" data-lat="<%= @place.latitude.to_json%>" data-lng="<%= @place.longitude.to_json%>"
-data-address= "<%= @place.address.to_json %>" data-h-address= "<%= @place.h_address.to_json %>"
-></div>
+	<div id="map-canvas" 
+		 data-name="<%= @place.name.to_json%>" 
+		 data-h-name="<%= @place.h_name.to_json%>" 
+		 data-website="<%= @place.website.to_json%>" 
+		 data-lat="<%= @place.latitude.to_json%>" 
+		 data-lng="<%= @place.longitude.to_json%>"
+		 data-address= "<%= @place.address.to_json %>" 
+		 data-h-address= "<%= @place.h_address.to_json %>">
+	</div>
 
-<script>initialize_place();</script>
+	<% content_for :scripts do %>
+		<script>initialize_place();</script>
+	<% end %>
 
-<% if I18n.locale == :en %>
-	<div class="well" id="place-column" >
-	
+	<% if I18n.locale == :en %>
+		<div class="well" id="place-column" >
 		
 			<div class="bar-name">
 				<%= @place.name.gsub('-',' ') %>
@@ -38,58 +45,55 @@ data-address= "<%= @place.address.to_json %>" data-h-address= "<%= @place.h_addr
 					<%= t('Log in to rate') %>
 				<%end%>
 					<div id="user_star"></div>
+			</div>		
+		
+			<div id="nearby-places-box" >
+				<div id="nearby-places">Nearby Places</div>
+				<ul>
+					<%for place in @place.nearbys(0.5)%>
+						<li>
+							<%= link_to place.name.gsub('-',' '), place%> (<%= (place.distance * 1609.34).round(2)%> m)
+						</li>
+					<%end%>
+				</ul>		
 			</div>
-		
-	
-		<div id="nearby-places-box" >
-			<div id="nearby-places">Nearby Places</div>
-			<ul>
-				<%for place in @place.nearbys(0.5)%>
-					<li>
-						<%= link_to place.name.gsub('-',' '), place%> (<%= (place.distance * 1609.34).round(2)%> m)
-					</li>
-				<%end%>
-			</ul>
-		
+				
+
+			<% string = "http://noSmokingPlaces.com/" + @place.id.to_s + "/comments" %>
+			
+			<div class="fb-comments" data-href=<%= string %> data-numposts="5" data-colorscheme="light"></div>
+
 		</div>
-		
 
-	<% string = "http://noSmokingPlaces.com/" + @place.id.to_s + "/comments" %>
-	
-	<div class="fb-comments" data-href=<%= string %> data-numposts="5" data-colorscheme="light"></div>
-		
+		<% content_for :scripts do %>
+			<script>
+				jQuery(document).ready(function() {
+					rateplaces("star", <%= @place.average_rating %>)
+				});
+			</script>
 
+			<% if @rating %>
+				<script>
+					jQuery(document).ready(function(){
+						$('#user_star').raty({
+							start: <%= @rating.score %>,
+							path: '/assets',
+							click: function(score, evt) {
+								$.ajax({
+									url: '/ratings/' + <%= @rating.id %>, 
+									type: 'PATCH',
+									data: { score:score,place_id: <%= @place.id %>}
+								});
+							}
+						});
+					});
+				</script>
+			<% end %>
+		<% end %>	
+	<%end%>
 
-
-<script>
-jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</script>
-
-<% if @rating %>
-<script>
-		jQuery(document).ready(function(){
-
-	$('#user_star').raty({
-	start: <%= @rating.score %>,
-	path: '/assets',
-	click: function(score, evt) {
-	$.ajax({
-	url: '/ratings/' + <%= @rating.id %>
-			, type: 'PATCH',
-	data: { score:score,place_id: <%= @place.id %>
-		}
-		});
-		}
-		});
-		});
-</script>
-<% end %>
-</div>
-<%end%>
-
-
-
-<% if I18n.locale == :he %>
-	<div class="well" id="h-place-column" >
+	<% if I18n.locale == :he %>
+		<div class="well" id="h-place-column" >
 		
 			<div id="h-bar-name">
 				<%= @place.h_name.gsub('-',' ') %>
@@ -121,54 +125,55 @@ jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</scrip
 					<%= t('Log in to rate') %>
 				<%end%>
 					<div class="h-star" id="user_star"></div>
+			</div>		
+		
+			<div id= "h-nearby-places-box">
+				<div id= "h-nearby-places">  מקומות בילוי באזור  
+				</div>	
+				<ul>
+					<%for place in @place.nearbys(0.5)%>
+						<li>
+							<% place_url = "/he/places/" + place.id.to_s %>
+								<a href="<%= place_url %>"><%= place.h_name.gsub('-',' ')%>(<%= (place.distance * 1609.34).round(2)%> מטרים)</a>
+							
+						</li>
+					<%end%>
+				</ul>		
 			</div>
+			
+
+			<% string = "http://noSmokingPlaces.com/" + @place.id.to_s + "/comments" %>
 		
-	
-		<div id= "h-nearby-places-box">
-			<div id= "h-nearby-places">  מקומות בילוי באזור  
-			</div>	
-			<ul>
-				<%for place in @place.nearbys(0.5)%>
-					<li>
-						<% place_url = "/he/places/" + place.id.to_s %>
-							<a href="<%= place_url %>"><%= place.h_name.gsub('-',' ')%>(<%= (place.distance * 1609.34).round(2)%> מטרים)</a>
-						
-					</li>
-				<%end%>
-			</ul>
-		
+			<div class="fb-comments" data-href=<%= string %> data-numposts="5" data-colorscheme="light"></div>
+
 		</div>
-		
 
-	<% string = "http://noSmokingPlaces.com/" + @place.id.to_s + "/comments" %>
-	
-	<div class="fb-comments" data-href=<%= string %> data-numposts="5" data-colorscheme="light"></div>
-		
+		<% content_for :scripts do %>
+			<script>
+				jQuery(document).ready(function() {
+					rateplaces("star", <%= @place.average_rating %>);
+				});
+			</script>
 
+			<% if @rating %>
+				<script>
+					jQuery(document).ready(function(){
+						$('#user_star').raty({
+							start: <%= @rating.score %>,
+							path: '/assets',
+							click: function(score, evt) {
+								$.ajax({
+									url: '/ratings/' + <%= @rating.id %>, 
+									type: 'PATCH',
+									data: { score:score,place_id: <%= @place.id %>}
+								});
+							}
+						});
+					});
+				</script>
+			<% end %>
+		<% end %>
 
+	<%end%>
 
-<script>
-jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</script>
-
-<% if @rating %>
-<script>
-		jQuery(document).ready(function(){
-
-	$('#user_star').raty({
-	start: <%= @rating.score %>,
-	path: '/assets',
-	click: function(score, evt) {
-	$.ajax({
-	url: '/ratings/' + <%= @rating.id %>
-			, type: 'PATCH',
-	data: { score:score,place_id: <%= @place.id %>
-		}
-		});
-		}
-		});
-		});
-</script>
-<% end %>
-</div>
-<%end%>
-
+</div><!-- city-container -->

@@ -12,16 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.raty.js
+//= require raty.min
 //= require jquery.jscrollpane
-//= require turbolinks
 //= require bootstrap/bootstrap
-//= require_tree .
 
 function initialize() {
 
 	var location_string = document.getElementById("map-canvas").getAttribute("data-center");
 	var location = jQuery.parseJSON(location_string);
+
+	if (!location) return;
+	
 	var mapOptions = {
 		center : new google.maps.LatLng(location[0], location[1]),
 		zoom : 12,
@@ -273,7 +274,7 @@ function rateplaces(id, avg_rating) {
 
 }
 
-
+// Load facebook comments.
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
