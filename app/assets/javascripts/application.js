@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery.raty.js
 //= require jquery.jscrollpane
-//= require turbolinks
 //= require bootstrap/bootstrap
 //= require_tree .
 
