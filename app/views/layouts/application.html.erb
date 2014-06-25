@@ -20,6 +20,7 @@
 	<body class="<%= params[:controller]%> main-container" >
 
 		<div id="fb-root"></div>
+			
 		
 		<!--English nav-->
 		<% if I18n.locale == :en %>
@@ -51,13 +52,14 @@
 					
 
 					<li>
-						<a data-toggle="modal" data-target="#contact"> Contact Us </a>
+						<a style="cursor: pointer;" data-toggle="modal" data-target="#contact"> Contact Us </a>
 					</li>
 					
 
-					<li id= "facebook_button">
-
-						<div class="fb-like" data-href="https://www.facebook.com/NonSmokingPlaces" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
+					<li>
+                         <a style="cursor: pointer;" href="https://www.facebook.com/NonSmokingPlaces?fref=ts" target="_blank">follow us on facebook</a>
+						
+						<!--div class="fb-like" data-href="https://www.facebook.com/NonSmokingPlaces" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div-->
 					</li>
 					<li>
 						
@@ -69,14 +71,11 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<% if current_user %>
-					<li class="dropdown">
-				        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %><b class="caret"></b></a>
-				        <ul class="dropdown-menu">
-				        <li><a data-toggle="modal" data-target="#recommend"> <%= t('recommend a place') %> </a></li>
-				        <li class="divider"></li>
-				        <li><%= link_to t('Log Out'), logout_path %></li>
-				        </ul>
+					<li class="current_user">
+				        <%= current_user.email %>
+				        
 				      </li>
+				      <li><%= link_to raw("<i class=\"glyphicon glyphicon-log-out\"></i>"), logout_path %></li>
 					<% else %>
 					<li>	<a data-toggle="modal" data-target="#sign-up"> <%= t('Sign up') %></a>
 					
@@ -127,18 +126,20 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a data-toggle="modal" data-target="#h-contact"> צרו קשר</a>
+					    <a style="cursor: pointer;" href="https://www.facebook.com/NonSmokingPlaces?fref=ts" target="_blank"> עקבו אחרינו בפייסבוק</a>
+						<!--div class="fb-like" data-href="https://www.facebook.com/NonSmokingPlaces" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div-->
+					</li>
+					<li>
+						<a style="cursor: pointer;" data-toggle="modal" data-target="#h-contact"> צרו קשר</a>
 					</li>
 					
 
-					<li id= "facebook_button">
-
-						<div class="fb-like" data-href="https://www.facebook.com/NonSmokingPlaces" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
-					</li>
+					
 
 					
 					<li >
-						<%= link_to(t('About'),{:controller => 'static_pages', :action => 'about'} )%>
+						<!--%= link_to(t('About'),{:controller => 'static_pages', :action => 'about'} )%-->
+						<a href="/about?locale=he"><%= t('About') %></a>
 					</li>
 					
 					
@@ -156,13 +157,11 @@
 					</li>
 					<% end %>
 					<% if current_user %>
-					<li class="dropdown">
-				        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %><b class="caret"></b></a>
-				        <ul class="dropdown-menu">
-				        <li><a data-toggle="modal" data-target="#h-recommend"> <%= t('recommend a place') %> </a></li>
-				        <li class="divider"></li>
-				        <li><%= link_to t('Log Out'), logout_path %></li>
-				        </ul>
+					<li class="current_user">
+				        <%= current_user.email %>
+				     </li>   
+				     <li><%= link_to raw("<i class=\"glyphicon glyphicon-log-out\"></i>"), logout_path %></li>
+				      
 				      </li>
 					<% else %>
 					<li>	<a data-toggle="modal" data-target="#h-sign-up"> <%= t('Sign up') %></a>

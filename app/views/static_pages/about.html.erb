@@ -1,3 +1,24 @@
-<div class="well about">
-<h1>Hi</h1>
-</div>
+<% if I18n.locale == :en %>
+	<div id="about">
+		<p>Visiting Israel and looking for a smoke free bar or club? You've come to the right place. </p>
+		<p>This app was created to ensure you will not feel like a walking ashtray after your night out. </p>
+		<p>All venues on the list are checked regularly by volunteers who work to make Israel free from forced smoke in all public places. </p>
+		<p>Feel free to contact us on any subject, regarding the app or forced smoking in Israel in general. </p>
+	</div>
+<% end %>
+
+<% if I18n.locale == :he %>
+	<div id="h_about">
+	
+		<p>
+		 האתר הוקם במטרה לרכז את כל מקומות הבילוי אשר פועלים בהתאם לחוק למניעת עישון במקומות ציבוריים ומקפידים לספק ללקוחותיהם אוויר נקי בזמן הבילוי.
+		</p>
+		<p>כל המקומות ברשימה נבדקים על ידי מתנדבים ומוסרים מיד אם נמצא כי אינם אוכפים את החוק</p>
+		<p>
+		מעוניינים לעזור לקדם את המטרה?
+		שתפו הלאה את האתר - ספרו עליו לחבריכם ולבעלי מקומות בילוי.
+		ביליתם בפאב/מועדון שהאוויר בו נקי? ספרו לנו עליו כדי שנוכל להכניס אותו לרשימה שלנו. 
+		</p>
+		
+	</div>
+<% end %>
