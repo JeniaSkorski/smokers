@@ -12,6 +12,15 @@ data-address= "<%= @place.address.to_json %>" data-h-address= "<%= @place.h_addr
 			<div class="bar-name">
 				<%= @place.name.gsub('-',' ') %>
 			</div>
+			<div>
+<strong>Mode of Travel: </strong>
+<select id="mode" onchange="calcRoute();">
+  <option value="DRIVING">Driving</option>
+  <option value="WALKING">Walking</option>
+  <option value="BICYCLING">Bicycling</option>
+  <option value="TRANSIT">Transit</option>
+</select>
+</div>
 			<div>	
 				<%= @place.categories.map(&:name).join(', ') %>
 			</div>
@@ -84,6 +93,10 @@ jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</scrip
 </script>
 <% end %>
 </div>
+
+
+
+
 <%end%>
 
 

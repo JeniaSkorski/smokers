@@ -130,22 +130,14 @@ function initialize() {
 
 
 function initialize_place() {
-	
-	var place_lat_string = document.getElementById("map-canvas").getAttribute("data-lat");
-	var place_lng_string = document.getElementById("map-canvas").getAttribute("data-lng");
-	var place_name_string = document.getElementById("map-canvas").getAttribute("data-name");
-	var place_h_name_string = document.getElementById("map-canvas").getAttribute("data-h-name");
-	var place_website_string = document.getElementById("map-canvas").getAttribute("data-website");
-	var place_address_string = document.getElementById("map-canvas").getAttribute("data-address");
-	var place_h_address_string = document.getElementById("map-canvas").getAttribute("data-h-address");
 
-	var place_lat = jQuery.parseJSON(place_lat_string);
-	var place_lng = jQuery.parseJSON(place_lng_string);
-	var place_name = jQuery.parseJSON(place_name_string);
-	var place_h_name = jQuery.parseJSON(place_h_name_string);
-	var place_website = jQuery.parseJSON(place_website_string);
-	var place_address = jQuery.parseJSON(place_address_string);
-	var place_h_address = jQuery.parseJSON(place_h_address_string);
+	var place_lat = jQuery.parseJSON(document.getElementById("map-canvas").getAttribute("data-lat"));
+	var place_lng = jQuery.parseJSON(document.getElementById("map-canvas").getAttribute("data-lng"));
+	var place_name = jQuery.parseJSON(document.getElementById("map-canvas").getAttribute("data-name"));
+	var place_h_name = jQuery.parseJSON(document.getElementById("map-canvas").getAttribute("data-h-name"));
+	var place_website = jQuery.parseJSON(document.getElementById("map-canvas").getAttribute("data-website"));
+	var place_address = jQuery.parseJSON(document.getElementById("map-canvas").getAttribute("data-address"));
+	var place_h_address = jQuery.parseJSON(document.getElementById("map-canvas").getAttribute("data-h-address"));
 
 	var placeLatlng = new google.maps.LatLng(place_lat, place_lng);
 	
@@ -216,7 +208,7 @@ function initialize_place() {
 			}]
 		}]
 	};
-
+    
 	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	var infowindow = new google.maps.InfoWindow({
 		content : contentString
@@ -231,11 +223,47 @@ function initialize_place() {
 	google.maps.event.addListener(marker, 'click', function() {
 		infowindow.open(map, marker);
 	});
+
+    //user location//
+    // Try HTML5 geolocation
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+      var infowindow = new google.maps.InfoWindow({
+        map: map,
+        position: pos,
+        content: 'Location found using HTML5.'
+      });
+
+      map.setCenter(pos);
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+//location end
+
+/////////////dire
+
+
+//////////////////
+
+
+
+
+
+
+
+
 }
 
 
-//google.maps.event.addDomListener(window, 'load', initialize);
 
+//end of map///////////////////////////////////////////////////////////////
 jQuery(document).ready(function($) {
 
 
@@ -258,10 +286,12 @@ jQuery(document).ready(function($) {
 		$('#city-container').addClass('h-list-view');
 	});
 
-//end hebrew
+	//end hebrew
 	  
 });
 
+
+//ratings:
 function rateplaces(id, avg_rating) {
 	var string = "#" + id + "";
 	$(string).raty({
@@ -272,6 +302,7 @@ function rateplaces(id, avg_rating) {
 
 }
 
+//facebook stuff:
 
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
