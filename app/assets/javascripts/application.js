@@ -17,10 +17,15 @@
 //= require bootstrap/bootstrap
 //= require_tree .
 
+
 function initialize() {
 
 	var location_string = document.getElementById("map-canvas").getAttribute("data-center");
 	var location = jQuery.parseJSON(location_string);
+	
+	var directionsDisplay;
+	
+
 	var mapOptions = {
 		center : new google.maps.LatLng(location[0], location[1]),
 		zoom : 12,
@@ -87,6 +92,8 @@ function initialize() {
 	
 	
 	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	directionsDisplay.setMap(map);
+
 	var markers = new Array();
 	var contentStrings = new Array();
 	var marker;
@@ -130,7 +137,7 @@ function initialize() {
 
 
 function initialize_place() {
-
+	
 	var place_lat = jQuery.parseJSON(document.getElementById("map-canvas").getAttribute("data-lat"));
 	var place_lng = jQuery.parseJSON(document.getElementById("map-canvas").getAttribute("data-lng"));
 	var place_name = jQuery.parseJSON(document.getElementById("map-canvas").getAttribute("data-name"));
@@ -222,6 +229,7 @@ function initialize_place() {
 	});
 	google.maps.event.addListener(marker, 'click', function() {
 		infowindow.open(map, marker);
+	
 	});
 
     //user location//
@@ -234,9 +242,9 @@ function initialize_place() {
       var infowindow = new google.maps.InfoWindow({
         map: map,
         position: pos,
-        content: 'Location found using HTML5.'
+        content: 'You are here'
       });
-
+	
       map.setCenter(pos);
     }, function() {
       handleNoGeolocation(true);
@@ -247,19 +255,36 @@ function initialize_place() {
   }
 //location end
 
-/////////////dire
-
-
-//////////////////
-
-
-
-
-
-
-
+google.maps.event.addDomListener(window, 'load', function(){
+	initialize_place();
+	alert("ccc");
+	});/*calcRoute(32.0806126, 34.7738658, 31.7819054, 35.2213715)*/
 
 }
+function calcRoute(pos1, pos2, placeLatLng1, placeLatLng2) {
+	alert ("bbbb");
+  var directionsService = new google.maps.DirectionsService();
+  var selectedMode = document.getElementById('mode').value;
+  pos = google.maps.LatLng(pos1, pos2);
+  placeLatLng = google.maps.LatLng(placeLatLng1, placeLatLng2);
+	alert ("aaaaa");
+	alert(pos);	
+  var request = {
+      origin: pos,
+      destination: placeLatLng,
+      // Note that Javascript allows us to access the constant
+      // using square brackets and a string value as its
+      // "property."
+      travelMode: google.maps.TravelMode[selectedMode]
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+    	alert("aaa");
+      directionsDisplay.setDirections(response);
+    }
+  });
+}
+
 
 
 

@@ -3,7 +3,7 @@
 data-address= "<%= @place.address.to_json %>" data-h-address= "<%= @place.h_address.to_json %>"
 ></div>
 
-<script>initialize_place();</script>
+
 
 <% if I18n.locale == :en %>
 	<div class="well" id="place-column" >
@@ -12,15 +12,7 @@ data-address= "<%= @place.address.to_json %>" data-h-address= "<%= @place.h_addr
 			<div class="bar-name">
 				<%= @place.name.gsub('-',' ') %>
 			</div>
-			<div>
-<strong>Mode of Travel: </strong>
-<select id="mode" onchange="calcRoute();">
-  <option value="DRIVING">Driving</option>
-  <option value="WALKING">Walking</option>
-  <option value="BICYCLING">Bicycling</option>
-  <option value="TRANSIT">Transit</option>
-</select>
-</div>
+			
 			<div>	
 				<%= @place.categories.map(&:name).join(', ') %>
 			</div>
@@ -49,7 +41,16 @@ data-address= "<%= @place.address.to_json %>" data-h-address= "<%= @place.h_addr
 					<div id="user_star"></div>
 			</div>
 		
-	
+	    <div>
+	    	<strong style="font-size: 20px;">Get directions from your location</strong></br>
+			<strong>Mode of Travel: </strong>
+				<select id="mode" onchange="calcRoute();">
+				  <option value="DRIVING">Driving</option>
+				  <option value="WALKING">Walking</option>
+				  <option value="BICYCLING">Bicycling</option>
+				  <option value="TRANSIT">Transit</option>
+				</select>
+		</div>
 		<div id="nearby-places-box" >
 			<div id="nearby-places">Nearby Places</div>
 			<ul>
@@ -76,19 +77,18 @@ jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</scrip
 <% if @rating %>
 <script>
 		jQuery(document).ready(function(){
-
-	$('#user_star').raty({
-	start: <%= @rating.score %>,
-	path: '/assets',
-	click: function(score, evt) {
-	$.ajax({
-	url: '/ratings/' + <%= @rating.id %>
-			, type: 'PATCH',
-	data: { score:score,place_id: <%= @place.id %>
-		}
-		});
-		}
-		});
+			$('#user_star').raty({
+				start: <%= @rating.score %>,
+				path: '/assets',
+				click: function(score, evt) {
+					$.ajax({
+						url: '/ratings/' + <%= @rating.id %>,
+						type: 'PATCH',
+						data: { score:score,place_id: <%= @place.id %>
+								}
+							});
+				}
+			});
 		});
 </script>
 <% end %>
@@ -136,7 +136,15 @@ jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</scrip
 					<div class="h-star" id="user_star"></div>
 			</div>
 		
-	
+	    <div>
+			<strong>Mode of Travel: </strong>
+				<select id="mode" onchange="calcRoute();">
+				  <option value="DRIVING">Driving</option>
+				  <option value="WALKING">Walking</option>
+				  <option value="BICYCLING">Bicycling</option>
+				  <option value="TRANSIT">Transit</option>
+				</select>
+		</div>
 		<div id= "h-nearby-places-box">
 			<div id= "h-nearby-places">  מקומות בילוי באזור  
 			</div>	
@@ -166,22 +174,23 @@ jQuery(document).ready(rateplaces("star", <%= @place.average_rating %>));</scrip
 <% if @rating %>
 <script>
 		jQuery(document).ready(function(){
-
-	$('#user_star').raty({
-	start: <%= @rating.score %>,
-	path: '/assets',
-	click: function(score, evt) {
-	$.ajax({
-	url: '/ratings/' + <%= @rating.id %>
-			, type: 'PATCH',
-	data: { score:score,place_id: <%= @place.id %>
-		}
-		});
-		}
-		});
+			$('#user_star').raty({
+				start: <%= @rating.score %>,
+				path: '/assets',
+				click: function(score, evt) {
+					$.ajax({
+						url: '/ratings/' + <%= @rating.id %>,
+						type: 'PATCH',
+						data: { score:score,place_id: <%= @place.id %>
+							  }
+							});
+						}
+			});
 		});
 </script>
 <% end %>
 </div>
 <%end%>
 
+<script>jQuery(document).ready(function($) {initialize_place();});</script>
+<!--script>jQuery(document).ready(function($) {calcRoute(32.0806126, 34.7738658, 31.7819054, 35.2213715);});</script-->
